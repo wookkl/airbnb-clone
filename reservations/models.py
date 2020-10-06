@@ -2,7 +2,7 @@ from django.db import models
 from core import models as core_models
 
 
-class Reservations(core_models.AbstractTimeStamp):
+class Reservation(core_models.AbstractTimeStamp):
 
     """ Reservation Definition """
 
