@@ -9,7 +9,7 @@ class Conversation(core_models.AbstractTimeStamp):
     participants = models.ManyToManyField("users.User", blank=True)
 
     def __str__(self):
-        return self.created
+        return str(self.created)
 
 
 class Message(core_models.AbstractTimeStamp):

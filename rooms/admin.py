@@ -15,7 +15,25 @@ class RoomAdmin(admin.ModelAdmin):
 
     """ Romm Admin Definition """
 
-    pass
+    list_display = (
+        "name",
+        "country",
+        "city",
+        "price",
+        "guests",
+        "beds",
+        "baths",
+        "bedrooms",
+        "check_in",
+        "cehck_out",
+        "instant_book",
+    )
+    list_filter = (
+        "instant_book",
+        "city",
+        "country",
+    )
+    search_fields = ("city", "^host__username")
 
 
 @admin.register(models.Photo)
