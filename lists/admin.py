@@ -12,3 +12,4 @@ class ListAdmin(admin.ModelAdmin):
         "user",
         "count_rooms",
     )
+    search_fields = ("name",)

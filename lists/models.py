@@ -15,3 +15,5 @@ class List(core_models.AbstractTimeStamp):
 
     def count_rooms(self):
         return self.rooms.count()
+
+    count_rooms.short_description = "Number of rooms"
