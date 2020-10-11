@@ -102,6 +102,9 @@ class RoomAdmin(admin.ModelAdmin):
         "city",
         "country",
     )
+
+    raw_id_fields = ("host",)
+
     search_fields = ("city", "^host__username")
 
     filter_horizontal = (
