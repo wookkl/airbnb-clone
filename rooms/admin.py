@@ -49,6 +49,7 @@ class RoomAdmin(admin.ModelAdmin):
                     "name",
                     "description",
                     "country",
+                    "city",
                     "address",
                     "price",
                 )
