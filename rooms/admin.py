@@ -17,10 +17,18 @@ class ItemAdmin(admin.ModelAdmin):
         return obj.rooms.count()
 
 
+class PhotoInline(admin.TabularInline):
+    """ Definition PhotoInline """
+
+    model = models.Photo
+
+
 @admin.register(models.Room)
 class RoomAdmin(admin.ModelAdmin):
 
     """ Romm Admin Definition """
+
+    inlines = (PhotoInline,)
 
     fieldsets = (
         (
