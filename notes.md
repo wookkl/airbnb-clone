@@ -361,6 +361,19 @@ admin_save()는 admin 패널에서 저장될때의 메서드임
 6. `python manage.py loveyou --times 50 // loveyou를 50번 한다 `
 7. Command class 생성
 
+```python
+def add_arguments(self, parser):
+        parser.add_argument(
+            "--times",
+            help="How many times do you want me to tell you that i love you",
+        )
+
+    def handle(self, *args, **options):
+        times = options.get("times")
+        for t in range(0,int(times)):
+            self.stdout.write.(self.style.SUCCESS("I love you"))
+```
+
 ## Django seed
 
 가짜 데이터를 빠르게 만들 수 있게 해줌
