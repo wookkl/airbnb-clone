@@ -381,3 +381,7 @@ def add_arguments(self, parser):
 ## from django.contrib.admin.utils import flatten
 
 2차원 배열을 평평하게!
+
+## 다대다 필드에서 필드 추가 하는 방법!
+
+room.amenities.add(a)
