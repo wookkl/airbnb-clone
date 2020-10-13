@@ -12,7 +12,7 @@ class Command(BaseCommand):
     def add_arguments(self, parser):
         parser.add_argument(
             "--number",
-            default=2,
+            default=1,
             type=int,
             help="How many rooms do you want to create",
         )
@@ -22,6 +22,9 @@ class Command(BaseCommand):
         seeder = Seed.seeder()
         all_users = user_models.User.objects.all()
         all_room_types = room_models.RoomType.objects.all()
+        all_amenities = room_models.Amenity.objects.all()
+        all_facilities = room_models.Facility.objects.all()
+        all_rules = room_models.HouseRule.objects.all()
         seeder.add_entity(
             room_models.Room,
             number,
@@ -48,5 +51,17 @@ class Command(BaseCommand):
                     room=room,
                     file=f"/room_photos/{random.randint(1,31)}.webp",
                 )
+            for a in all_amenities:
+                num = random.randint(0, 15)
+                if not num % 2:
+                    room.amenities.add(a)
+            for f in all_facilities:
+                num = random.randint(0, 15)
+                if not num % 2:
+                    room.facilities.add(f)
+            for r in all_rules:
+                num = random.randint(0, 15)
+                if not num % 2:
+                    room.house_rules.add(r)
 
         self.stdout.write(self.style.SUCCESS(f"{number} rooms created!"))
