@@ -377,3 +377,7 @@ def add_arguments(self, parser):
 ## Django seed
 
 가짜 데이터를 빠르게 만들 수 있게 해줌
+
+## from django.contrib.admin.utils import flatten
+
+2차원 배열을 평평하게!
