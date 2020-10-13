@@ -1,3 +1,5 @@
+# Model
+
 # pipenv: 파이썬 패키지 관리 툴 프로젝트
 
 패키지가 전역으로 설치되는 것을 없애기 위해 만들어짐
@@ -385,3 +387,18 @@ def add_arguments(self, parser):
 ## 다대다 필드에서 필드 추가 하는 방법!
 
 room.amenities.add(a)
+
+---
+
+# View
+
+## view는 너가 요청에 반응하는 방법이고 url은 요청에 바로 응답하는 방법임
+
+/rooms /users 등으로 시작하는 것은 해당 앱 url에 두고 그외의 login logout들은 core에 두는게 좋음
+
+## config urls에 app url import 하는 방법
+
+```python
+from django.urls import path, include
+urlpatterns = [path("", include("core.urls"))]
+```
