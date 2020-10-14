@@ -76,7 +76,7 @@ django-admin startapps examples  #애플리케이션 이름은 복수형이어�
 
 만약 admin.py에 코드를 짜면 admin 패널에 반영됨
 
-- application폴더
+- application 폴더
 
 * models.py : 원하는 데이터베이스가 어떻게 생걌는지에 대해서 설명하는 곳, 데이터가 보여지는 곳
 
@@ -368,12 +368,12 @@ def add_arguments(self, parser):
         parser.add_argument(
             "--times",
             help="How many times do you want me to tell you that i love you",
-        )
+    )
 
-    def handle(self, *args, **options):
-        times = options.get("times")
-        for t in range(0,int(times)):
-            self.stdout.write.(self.style.SUCCESS("I love you"))
+def handle(self, *args, **options):
+    times = options.get("times")
+    for t in range(0,int(times)):
+        self.stdout.write.(self.style.SUCCESS("I love you"))
 ```
 
 ## Django seed
@@ -402,3 +402,16 @@ room.amenities.add(a)
 from django.urls import path, include
 urlpatterns = [path("", include("core.urls"))]
 ```
+
+## app_name이랑 namespace랑 같아야함
+
+## httpResponse
+
+httpResquest에 대한 응답으로 httpResponse object를 리턴해준다
+
+```python
+from django.http import HttpResponse
+
+```
+
+template(html)들을 rendering할 것임
