@@ -436,3 +436,9 @@ context를 template에서 사용하는 방법은 {{now}}
 ## block
 
 하나의 창 같은 것 임 자식 템플릿이 부모 템플릿에게 넘겨주는 창
+
+
+?page=1 이런건 컨베션 이라고 함
+## url의 모든 것들은 GET request임! 브라우저에서 페이지로 가는건 GET request
+request.GET은 get을 가지고 있는데 queryDictionary에서 원하는 key의 value를 가지고 올 수 있게 해줌
+request.GET.get("page",0) page key가 존재하지 않을떄 기본적으로 0을 반환함
