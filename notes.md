@@ -415,3 +415,24 @@ from django.http import HttpResponse
 ```
 
 template(html)들을 rendering할 것임
+
+## 장고에게 templates 위치 알려주기
+
+config/setting.py에 TEMPLATES에 "DIRS"가 있음 여기에
+Path("templates")
+
+## templates에ㅅ 가장 장점인 부분은 context인데 context는 변수는 보내는 하나의 방법이다
+
+context를 template에서 사용하는 방법은 {{now}}
+
+## base.html
+
+다른 템플릿들을 쉽게 렌더링할 수 있게 하기 위해서 골격을 짜줌
+
+## extends
+
+마리 만드러둔 base.html골격을 사용하기 위해서
+
+## block
+
+하나의 창 같은 것 임 자식 템플릿이 부모 템플릿에게 넘겨주는 창
