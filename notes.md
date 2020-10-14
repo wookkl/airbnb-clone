@@ -442,3 +442,12 @@ context를 template에서 사용하는 방법은 {{now}}
 ## url의 모든 것들은 GET request임! 브라우저에서 페이지로 가는건 GET request
 request.GET은 get을 가지고 있는데 queryDictionary에서 원하는 key의 value를 가지고 올 수 있게 해줌
 request.GET.get("page",0) page key가 존재하지 않을떄 기본적으로 0을 반환함
+
+## pagingator 
+pagination
+```python
+from.django.core.paginator import Paginator
+```
+
+__room_models.Room.objects.all()__ 사실 이것은 호출하는 즉시 데이터를 리턴하는 것이 아니라 쿼리셋만 생성할 뿐이다!
+호출이 되는 순간에 즉시 데이터베이스로부터 불려져 올것임

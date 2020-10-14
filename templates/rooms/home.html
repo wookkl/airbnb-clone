@@ -9,15 +9,13 @@
         <h4>{{room.name}}</h4>
     {% endfor %}
 
-    {% if page is not 1 %}
-        <a href="/?page={{page|add:-1}}">prev</a>
+    {% if rooms.has_previous %}
+        <a href="/?page={{rooms.number|add:-1}}">prev</a>
     {% endif %}
 
-    <span>Page {{page}} of {{page_count}}</span>
-
-    {% if not page == page_count %}
-    <a href="/?page={{page|add:1}}">next</a>
+    <span>Page {{rooms.number}} of {{rooms.paginator.num_pages}}</span>
+    
+    {% if  rooms.has_next%}
+        <a href="/?page={{rooms.number|add:1}}">next</a>
     {% endif %}
-
-
 {% endblock content %}
