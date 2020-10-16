@@ -496,3 +496,8 @@ url에 변수를 가질 수 있게 함
 models.get_absolute_url() : 원하는 모델을 찾을 수 있눈 url을 리턴
 `from django.urls import reverse`
 reverse module: return되는 url을 namespace와 name, kwargs를 사용하여 url을 리턴 시킴
+
+
+## DetailView
+ 기본적인 detailview는 model 이름에 따라서 lowercase한다음 그것을 context로 기본적으로 제공
+ 또한, 기본적으로 url argument로 pk를 찾음
