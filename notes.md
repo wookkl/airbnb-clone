@@ -489,3 +489,10 @@ url에 변수를 가질 수 있게 함
 {% url %}
 사용 방법:
 {% url namespace:name%}
+
+
+## url & namespace
+
+models.get_absolute_url() : 원하는 모델을 찾을 수 있눈 url을 리턴
+`from django.urls import reverse`
+reverse module: return되는 url을 namespace와 name, kwargs를 사용하여 url을 리턴 시킴
