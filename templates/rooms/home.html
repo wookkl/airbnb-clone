@@ -5,17 +5,17 @@
 
 {%block content %}
 
-    {% for room in rooms %}
+    {% for room in page %}
         <h4>{{room.name}}</h4>
     {% endfor %}
 
-    {% if rooms.has_previous %}
-        <a href="/?page={{rooms.number|add:-1}}">prev</a>
+    {% if page.has_previous %}
+        <a href="/?page={{page.previous_page_numbe}}">prev</a>
     {% endif %}
 
-    <span>Page {{rooms.number}} of {{rooms.paginator.num_pages}}</span>
+    <span>Page {{page.number}} of {{page.paginator.num_pages}}</span>
     
-    {% if  rooms.has_next%}
-        <a href="/?page={{rooms.number|add:1}}">next</a>
+    {% if  page.has_next%}
+        <a href="/?page={{page.next_page_number}}">next</a>
     {% endif %}
 {% endblock content %}

@@ -438,7 +438,7 @@ context를 template에서 사용하는 방법은 {{now}}
 하나의 창 같은 것 임 자식 템플릿이 부모 템플릿에게 넘겨주는 창
 
 
-?page=1 이런건 컨베션 이라고 함
+?page=1 이런건 컨벤션 이라고 함
 ## url의 모든 것들은 GET request임! 브라우저에서 페이지로 가는건 GET request
 request.GET은 get을 가지고 있는데 queryDictionary에서 원하는 key의 value를 가지고 올 수 있게 해줌
 request.GET.get("page",0) page key가 존재하지 않을떄 기본적으로 0을 반환함
@@ -451,3 +451,12 @@ from.django.core.paginator import Paginator
 
 __room_models.Room.objects.all()__ 사실 이것은 호출하는 즉시 데이터를 리턴하는 것이 아니라 쿼리셋만 생성할 뿐이다!
 호출이 되는 순간에 즉시 데이터베이스로부터 불려져 올것임
+
+## orphans: 요소의 목록인데 남겨진 요소라고 생각하면 좋을 듯 
+23페이지중 
+Paginator(room, 10) 이라면 3개의 요소가 남겨진 요소인데 여기서 orphan=5 인자를 넣어주면 5보다 작은 orphans가 나오면 그 전페이지에뿌려줌 따라서 2페이지에 13개의 요소가 뿌려짐
+
+
+get_page와 page??
+get_page method는 많은 것들을 허용해줘서 컨트롤하기 쉬운반면
+page는 에러를 좀더 세세하게 컨트롤할 수 있음
