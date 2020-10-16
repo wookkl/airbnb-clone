@@ -460,3 +460,16 @@ Paginator(room, 10) 이라면 3개의 요소가 남겨진 요소인데 여기서
 get_page와 page??
 get_page method는 많은 것들을 허용해줘서 컨트롤하기 쉬운반면
 page는 에러를 좀더 세세하게 컨트롤할 수 있음
+
+ 
+## concept of listview
+Definition : A page representing a list of objects
+listview는 class based view라고 불리는 가족에게서 왔음
+class based view는 함수 위에서 더 많은 abstract를 한다.
+`room_views.HomeView.as_view()`
+기본적으로 HomeView는 클래스인데  urlpatterns 의 path에는 view function을 넣어야함 따라서 
+Based view 는 as_view라는 function이 존재함 이것을 사용하면 됨
+
+## ccbv classy class-Based Views.
+https://ccbv.co.uk/
+대부분의 class-based view를 보여주는 곳임  
