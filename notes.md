@@ -472,4 +472,20 @@ Based view 는 as_view라는 function이 존재함 이것을 사용하면 됨
 
 ## ccbv classy class-Based Views.
 https://ccbv.co.uk/
-대부분의 class-based view를 보여주는 곳임  
+대부분의 class-based view를 보여주는 곳임
+
+
+## class-Based View vs function-Based view?
+
+CBV는 굉장히 유연하기때문에 프로그래밍할 시간을 줄일 수 있음
+그러나 FBV는 하드코어하게 컨트롤을 할 수 있음
+
+
+## url dispather
+url에 변수를 가질 수 있게 함
+
+
+## url tag!
+{% url %}
+사용 방법:
+{% url namespace:name%}
