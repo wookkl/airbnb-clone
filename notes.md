@@ -501,3 +501,12 @@ reverse module: return되는 url을 namespace와 name, kwargs를 사용하여 ur
 ## DetailView
  기본적인 detailview는 model 이름에 따라서 lowercase한다음 그것을 context로 기본적으로 제공
  또한, 기본적으로 url argument로 pk를 찾음
+
+
+ ## block Trick!
+ 블럭을 숨기고 싶을떄 base에 block을 정의하고
+ block을 숨기고 싶을 경우에 빈 block을 넣어줌
+
+ ## submit
+
+ form안에 button이 하나만 있다면 그것은 submit임!
