@@ -52,6 +52,7 @@ class RoomAdmin(admin.ModelAdmin):
                     "city",
                     "address",
                     "price",
+                    "room_type",
                 )
             },
         ),
