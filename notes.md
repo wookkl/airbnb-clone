@@ -510,3 +510,10 @@ reverse module: return되는 url을 namespace와 name, kwargs를 사용하여 ur
  ## submit
 
  form안에 button이 하나만 있다면 그것은 submit임!
+
+
+ ## **
+`{**form, **choices}` 안의 요소들이 unpack됌!
+
+## slugify
+모든 것은 텍스트로 바꿔버림!!
