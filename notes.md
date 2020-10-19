@@ -481,7 +481,7 @@ CBV는 굉장히 유연하기때문에 프로그래밍할 시간을 줄일 수 �
 그러나 FBV는 하드코어하게 컨트롤을 할 수 있음
 
 
-## url dispather
+## url dispatcher
 url에 변수를 가질 수 있게 함
 
 
