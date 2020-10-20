@@ -519,3 +519,12 @@ reverse module: return되는 url을 namespace와 name, kwargs를 사용하여 ur
 모든 것은 텍스트로 바꿔버림!!
 
 ## Field lookups
+필드 필터링할때 사용!
+
+__gte: greater than equal
+
+__lte: less than equal
+
+__pk : primary key
+
+__startswith: 
