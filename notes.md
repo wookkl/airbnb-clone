@@ -527,4 +527,8 @@ __lte: less than equal
 
 __pk : primary key
 
-__startswith: 
+__startswith:
+
+
+## Forms API
+python 파일을 만들면 labels, value, placeholder, selected, checked 다 알아서 만들어줌
