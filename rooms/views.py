@@ -1,7 +1,7 @@
 from django.views.generic import ListView, DetailView
 from django.shortcuts import render
 from django_countries import countries
-from . import models
+from . import models, forms
 
 
 class HomeView(ListView):
@@ -26,9 +26,10 @@ def search(request):
 
     """ search Definition """
 
+    form = forms.SearchForm()
 
     return render(
         request,
         "rooms/search.html",
-        "form":form
+        {"form": form},
     )

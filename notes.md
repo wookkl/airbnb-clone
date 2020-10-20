@@ -532,3 +532,13 @@ __startswith:
 
 ## Forms API
 python 파일을 만들면 labels, value, placeholder, selected, checked 다 알아서 만들어줌
+as_p : paragraph 형식으로 보여줌
+as_ul : list 형식으로 보여줌
+as_table: : 테이블 형식으로 보여줌
+forms.ModelChoiceField :  select option form을 생성  쿼리셋이 필요함
+
+form field는 widget을 rendering 하는 것임 **Widget: HTML element**
+
+## Form field attribute
+help_text: 필드 밑에 도움말이 추가됨!
+
