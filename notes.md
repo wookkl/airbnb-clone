@@ -542,3 +542,13 @@ form field는 widget을 rendering 하는 것임 **Widget: HTML element**
 ## Form field attribute
 help_text: 필드 밑에 도움말이 추가됨!
 
+` form = forms.SearchForm(request.GET)` : form클래스에 보내주면 자동으로 입력된 부분을 저장해줌
+
+## unbound form 
+우리가 갖고 있던 비어있는 form
+
+## bound form
+form에 정보가 입력되어 있는 상태
+
+## if form.is_valid()
+form이 알맞게 잘 설정 되었는지 확인해줌
