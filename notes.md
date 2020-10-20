@@ -552,3 +552,7 @@ form에 정보가 입력되어 있는 상태
 
 ## if form.is_valid()
 form이 알맞게 잘 설정 되었는지 확인해줌
+
+## filtering된 객체들은 순서가 뒤섞여 있음 따라서
+필터링 후에는 정렬을 해줘야 하는데
+`qs = qs.order_by("created")`를 톨해 ordering 가능
