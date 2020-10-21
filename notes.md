@@ -589,3 +589,13 @@ AJAX란, JavaScript의 라이브러리중 하나이며 Asynchronous Javascript A
 페이지의 일부만을 위한 데이터를 로드하는 기법 이며 JavaScript를 사용한 비동기 통신,
 클라이언트와 서버간에 XML 데이터를 주고받는 기술이다.
 즉, 쉽게 말하자면 자바스크립트를 통해서 서버에 데이터를 요청하는 것이다.
+
+## csrf_token
+
+이 토큰은 기본적으로 post request가 이 웹시이트에서 왔는지 확인하는 거임
+
+## def clean_email(self):
+
+이메일이나 비밀번호가 있는 field를 확인하고 싶으면 method 이름은 clean\_ 이어야함
+
+에러를 넣는 것 뿐만 아니라 데이터를 정리도 해줌
