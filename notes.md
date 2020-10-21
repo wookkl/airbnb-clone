@@ -605,4 +605,17 @@ form.clean_data는 모든 필드를 정리해준 거에 대한 결과
 
 ## clean method: 두 개의 다른 field가 서로 관련이 있을떄 확인하는 method
 
-## self.add_error(): 어떤 필드에서 에러가 생겼는지 나타내게 한다.
+    무조건  cleaned_data를 리턴해야함!
+
+## self.add_error(): 어떤 필드에서 에러가 생겼는지 나타내게 한다. clean method사용할때... field가 두개 이상이기때문에
+
+## 로그인 시키려면 두가지 과정이 필요함
+
+1. 인증 username,password 필요 return User oject
+2. 로그인 request, User 객체를 줌
+3. Redirect to a success page!
+
+## Contrext Processor: 함수! template에 정보를 추가하는 일을 함!! 어디서든지 그 template으로 접근 할 수 있음! 그 view의 context가 아닌 어디서든지 가능
+
+cookie를 가져와서 user을 찾고 그걸 template에 자동으로 넣어줌
+파이썬 함수로 변수 하나만 가져가서 dictionary에 리턴
