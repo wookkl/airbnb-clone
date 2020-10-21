@@ -619,3 +619,7 @@ form.clean_data는 모든 필드를 정리해준 거에 대한 결과
 
 cookie를 가져와서 user을 찾고 그걸 template에 자동으로 넣어줌
 파이썬 함수로 변수 하나만 가져가서 dictionary에 리턴
+
+## Formview
+
+인증을 해야할 떄에 정말 좋음 그리고 스스로 만들고 싶을 때도
