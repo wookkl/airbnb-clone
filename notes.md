@@ -627,3 +627,10 @@ cookie를 가져와서 user을 찾고 그걸 template에 자동으로 넣어줌
 ## 암호화!!
 
 계정을 생성하고 model에 저장할때에는 꼭 패스워드를 암호화해서 저장시켜야함!
+
+## Modelform
+
+장점: Modelform자체에 clean save method가 있음
+unique한 field값을 validate할 수 있음
+save() overiding할때에 commit=False를 넘겨줘야한다 왜냐하면 유저를 생성하고 나서
+overing method 마지막에 자체적으로 commit해준다
