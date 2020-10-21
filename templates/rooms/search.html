@@ -1,12 +1,10 @@
 {% extends "base.html" %}
 
-
 {% block page_title %}
-Search
+    Search
 {% endblock page_title %}
 
 {% block search-bar %}
-
 {% endblock search-bar %}
 
 {% block content %}
@@ -18,7 +16,6 @@ Search
     </form>
 
     <h3>Results</h3>
-
 
     {% for room in rooms %}
         {{room.name}}</br>
@@ -33,6 +30,4 @@ Search
     {% if  page_obj.has_next%}
         <a href="/?page={{page_obj.next_page_number}}">next</a>
     {% endif %}
-
-
 {% endblock content %}

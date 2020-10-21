@@ -8,6 +8,8 @@ from . import forms
 
 class LoginView(FormView):
 
+    """ LogIn View Definition """
+
     template_name = "users/login.html"
     form_class = forms.LoginForm
     success_url = reverse_lazy("core:home")
@@ -22,7 +24,24 @@ class LoginView(FormView):
 
 
 class LogoutView(LogoutView):
+
+    """ Logout View Definition """
+
     next_page = reverse_lazy("core:home")
 
     def post(request):
         logout(request)
+
+
+class SignUpView(FormView):
+
+    """ SignUp View Definition """
+
+    template_name = "users/signup.html"
+    form_class = forms.SignUpForm
+    success_url = reverse_lazy("core:home")
+    initial = {
+        "first_name": "Lee",
+        "last_name": "Jeongwook",
+        "email": "wjddnr3315@gmail.com",
+    }
