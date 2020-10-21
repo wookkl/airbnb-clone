@@ -599,3 +599,10 @@ AJAX란, JavaScript의 라이브러리중 하나이며 Asynchronous Javascript A
 이메일이나 비밀번호가 있는 field를 확인하고 싶으면 method 이름은 clean\_ 이어야함
 
 에러를 넣는 것 뿐만 아니라 데이터를 정리도 해줌
+
+form.clean_data는 모든 필드를 정리해준 거에 대한 결과
+만약 clean method를 정의해줬는데 아무것도 리턴을 안한다면 그 필드를 지워버림
+
+## clean method: 두 개의 다른 field가 서로 관련이 있을떄 확인하는 method
+
+## self.add_error(): 어떤 필드에서 에러가 생겼는지 나타내게 한다.
