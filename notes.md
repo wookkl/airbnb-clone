@@ -437,59 +437,61 @@ context를 template에서 사용하는 방법은 {{now}}
 
 하나의 창 같은 것 임 자식 템플릿이 부모 템플릿에게 넘겨주는 창
 
-
 ?page=1 이런건 컨벤션 이라고 함
+
 ## url의 모든 것들은 GET request임! 브라우저에서 페이지로 가는건 GET request
+
 request.GET은 get을 가지고 있는데 queryDictionary에서 원하는 key의 value를 가지고 올 수 있게 해줌
 request.GET.get("page",0) page key가 존재하지 않을떄 기본적으로 0을 반환함
 
-## pagingator 
+## pagingator
+
 pagination
+
 ```python
 from.django.core.paginator import Paginator
 ```
 
-__room_models.Room.objects.all()__ 사실 이것은 호출하는 즉시 데이터를 리턴하는 것이 아니라 쿼리셋만 생성할 뿐이다!
+**room_models.Room.objects.all()** 사실 이것은 호출하는 즉시 데이터를 리턴하는 것이 아니라 쿼리셋만 생성할 뿐이다!
 호출이 되는 순간에 즉시 데이터베이스로부터 불려져 올것임
 
-## orphans: 요소의 목록인데 남겨진 요소라고 생각하면 좋을 듯 
-23페이지중 
-Paginator(room, 10) 이라면 3개의 요소가 남겨진 요소인데 여기서 orphan=5 인자를 넣어주면 5보다 작은 orphans가 나오면 그 전페이지에뿌려줌 따라서 2페이지에 13개의 요소가 뿌려짐
+## orphans: 요소의 목록인데 남겨진 요소라고 생각하면 좋을 듯
 
+23페이지중
+Paginator(room, 10) 이라면 3개의 요소가 남겨진 요소인데 여기서 orphan=5 인자를 넣어주면 5보다 작은 orphans가 나오면 그 전페이지에뿌려줌 따라서 2페이지에 13개의 요소가 뿌려짐
 
 get_page와 page??
 get_page method는 많은 것들을 허용해줘서 컨트롤하기 쉬운반면
 page는 에러를 좀더 세세하게 컨트롤할 수 있음
 
- 
 ## concept of listview
+
 Definition : A page representing a list of objects
 listview는 class based view라고 불리는 가족에게서 왔음
 class based view는 함수 위에서 더 많은 abstract를 한다.
 `room_views.HomeView.as_view()`
-기본적으로 HomeView는 클래스인데  urlpatterns 의 path에는 view function을 넣어야함 따라서 
+기본적으로 HomeView는 클래스인데 urlpatterns 의 path에는 view function을 넣어야함 따라서
 Based view 는 as_view라는 function이 존재함 이것을 사용하면 됨
 
 ## ccbv classy class-Based Views.
+
 https://ccbv.co.uk/
 대부분의 class-based view를 보여주는 곳임
-
 
 ## class-Based View vs function-Based view?
 
 CBV는 굉장히 유연하기때문에 프로그래밍할 시간을 줄일 수 있음
 그러나 FBV는 하드코어하게 컨트롤을 할 수 있음
 
-
 ## url dispatcher
+
 url에 변수를 가질 수 있게 함
 
-
 ## url tag!
+
 {% url %}
 사용 방법:
 {% url namespace:name%}
-
 
 ## url & namespace
 
@@ -497,62 +499,74 @@ models.get_absolute_url() : 원하는 모델을 찾을 수 있눈 url을 리턴
 `from django.urls import reverse`
 reverse module: return되는 url을 namespace와 name, kwargs를 사용하여 url을 리턴 시킴
 
-
 ## DetailView
- 기본적인 detailview는 model 이름에 따라서 lowercase한다음 그것을 context로 기본적으로 제공
- 또한, 기본적으로 url argument로 pk를 찾음
 
+기본적인 detailview는 model 이름에 따라서 lowercase한다음 그것을 context로 기본적으로 제공
+또한, 기본적으로 url argument로 pk를 찾음
 
- ## block Trick!
- 블럭을 숨기고 싶을떄 base에 block을 정의하고
- block을 숨기고 싶을 경우에 빈 block을 넣어줌
+## block Trick!
 
- ## submit
+블럭을 숨기고 싶을떄 base에 block을 정의하고
+block을 숨기고 싶을 경우에 빈 block을 넣어줌
 
- form안에 button이 하나만 있다면 그것은 submit임!
+## submit
 
+form안에 button이 하나만 있다면 그것은 submit임!
 
- ## **
+## \*\*
+
 `{**form, **choices}` 안의 요소들이 unpack됌!
 
 ## slugify
+
 모든 것은 텍스트로 바꿔버림!!
 
 ## Field lookups
+
 필드 필터링할때 사용!
 
-__gte: greater than equal
+\_\_gte: greater than equal
 
-__lte: less than equal
+\_\_lte: less than equal
 
-__pk : primary key
+\_\_pk : primary key
 
-__startswith:
-
+\_\_startswith:
 
 ## Forms API
+
 python 파일을 만들면 labels, value, placeholder, selected, checked 다 알아서 만들어줌
 as_p : paragraph 형식으로 보여줌
 as_ul : list 형식으로 보여줌
 as_table: : 테이블 형식으로 보여줌
-forms.ModelChoiceField :  select option form을 생성  쿼리셋이 필요함
+forms.ModelChoiceField : select option form을 생성 쿼리셋이 필요함
 
 form field는 widget을 rendering 하는 것임 **Widget: HTML element**
 
 ## Form field attribute
+
 help_text: 필드 밑에 도움말이 추가됨!
 
 ` form = forms.SearchForm(request.GET)` : form클래스에 보내주면 자동으로 입력된 부분을 저장해줌
 
-## unbound form 
+## unbound form
+
 우리가 갖고 있던 비어있는 form
 
 ## bound form
+
 form에 정보가 입력되어 있는 상태
 
 ## if form.is_valid()
+
 form이 알맞게 잘 설정 되었는지 확인해줌
 
 ## filtering된 객체들은 순서가 뒤섞여 있음 따라서
+
 필터링 후에는 정렬을 해줘야 하는데
 `qs = qs.order_by("created")`를 톨해 ordering 가능
+
+## prettier ignore
+
+django-html에서 prettier가 잘 안됨
+따라서 ,prettierignore에 무시하고자 하는 파일 또는 폴더를 적으면 됌
