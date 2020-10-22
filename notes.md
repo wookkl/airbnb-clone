@@ -653,3 +653,20 @@ email인증을 할때 랜덤숫자들을 이메일로 전송하고 그 해당 �
 from django.utils.html import strip_tags : html문법이 포함된 스트링을 태그를 제거한후 text만 추출
 
 from django.template.loader import render_to_string : template을 load해서 rendering
+
+## OAuth Protocol
+
+인터넷 사용자들이 비밀번호를 제공하지 않고 다른 웹사이트 상의 자신들의 정보에 대해 웹사이트나 애플리케이션의 접근 권한을 부여할 수 있는 공통적인 수단으로서 사용되는, 접근 위임을 위한 개방형 표준이다.이 매커니즘은 여러 기업들에 의해 사용되는데, 이를테면 아마존, 구글, 페이스북, 마이크로소프트, 트위터가 있으며 사용자들이 타사 애플리케이션이나 웹사이트의 계정에 관한 정보를 공유할 수 있게 허용한다
+
+- 작동원리
+  1. 유저랑 링크를 클릭
+  2. 그 링크는 유저를 view로 이동시키는데 그 view는 github으로 redirect시킴
+  3. github는 다시 유저를 웹사이트로 redirect 시킴
+
+## 로그인할 때나 계정을 새로 만들때 Github, Kakao 인증 절차는 같음 다른점은 게정이 없다면 계쩡을 만들어준다는 것인데 결과는 같음
+
+post.request 하기 위해서 requests 라이브러리를 사용
+
+## .env 자료 가져올때
+
+os.environ.get("DATA")

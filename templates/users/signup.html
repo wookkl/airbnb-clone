@@ -10,7 +10,8 @@
 {% endblock search-bar %}
     
 {% block content %}
-    <h2>Login</h2>
+    
+    {% include "partials/social_login.html" %}
 
     <form method="post" action="{% url "users:signup" %} ">
         {% csrf_token %}
