@@ -634,3 +634,12 @@ cookie를 가져와서 user을 찾고 그걸 template에 자동으로 넣어줌
 unique한 field값을 validate할 수 있음
 save() overiding할때에 commit=False를 넘겨줘야한다 왜냐하면 유저를 생성하고 나서
 overing method 마지막에 자체적으로 commit해준다
+
+## mailgun
+
+이메일 서버를 따로 두지않거 WAS에서 메일을 보내게 되면 스팸으로 가기때문에
+이메일 서버를 따로 둬야함 근데 그대신 인증된 mailgun API를 사용!
+
+## dotenv
+
+mailgun 유저 비밀번호를 git에 노출시키면 안되니까 dotenv를 사용
