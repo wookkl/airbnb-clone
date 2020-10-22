@@ -670,3 +670,15 @@ post.request 하기 위해서 requests 라이브러리를 사용
 ## .env 자료 가져올때
 
 os.environ.get("DATA")
+
+## Github Login 정리:
+
+    1. Github Login 버튼 클릭
+    2. 그 링크는 github.com으로 redirect됨
+    3. github.com 은 먗먗 데이터들을 필요로함 (client_id, redirect_uri, scope)
+    4. user가 github에서 accept버튼을 누르면 다시 redirect_uri로 redirect 됨 Github_callback의 결과값
+    5. github_callback에서는 url에서 code를 가져옴
+    6. token을 액세스 하기 위해서 코드를가지고 request함
+    7. 그럼 json data를 받을 수 있음 "Accept": "application/json" <<이 라인에 의해서 access_token이 들어있음
+    8. access_token를 가지고 github api에 request할 수 있음 headers에 token을 보냄
+    9. 결과적으로 user의 profile을 얻을 수 있음 json 형태로
