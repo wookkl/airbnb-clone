@@ -643,3 +643,13 @@ overing method 마지막에 자체적으로 commit해준다
 ## dotenv
 
 mailgun 유저 비밀번호를 git에 노출시키면 안되니까 dotenv를 사용
+
+## email verify
+
+email인증을 할때 랜덤숫자들을 이메일로 전송하고 그 해당 숫자들로 인증을 하는데
+그 숫자들을 generate하는 모듈이 uuid임
+`uuid.uuid4.hex()`
+
+from django.utils.html import strip_tags : html문법이 포함된 스트링을 태그를 제거한후 text만 추출
+
+from django.template.loader import render_to_string : template을 load해서 rendering
