@@ -671,7 +671,7 @@ post.request 하기 위해서 requests 라이브러리를 사용
 
 os.environ.get("DATA")
 
-## Github Login 정리:
+## Github Login 정리
 
     1. Github Login 버튼 클릭
     2. 그 링크는 github.com으로 redirect됨
@@ -682,3 +682,11 @@ os.environ.get("DATA")
     7. 그럼 json data를 받을 수 있음 "Accept": "application/json" <<이 라인에 의해서 access_token이 들어있음
     8. access_token를 가지고 github api에 request할 수 있음 headers에 token을 보냄
     9. 결과적으로 user의 profile을 얻을 수 있음 json 형태로
+
+## ImageField에 이미지 저장하는 방법
+
+    1. image url를 얻는다.
+    2. imgage url로 부터 request한다.
+    3. 요청한 데이터에는 .content를 멤버변수가 있음 raw-byte 데이임
+    4. 그 데이터를 Contentfile에 넣어주면 임의의 파일이 생성됨
+    5. user.imagefiled.save 메서드를 통해 저장해줌

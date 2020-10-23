@@ -43,18 +43,13 @@ class SignUpView(FormView):
     template_name = "users/signup.html"
     form_class = forms.SignUpForm
     success_url = reverse_lazy("core:home")
-    initial = {
-        "first_name": "Lee",
-        "last_name": "Jeongwook",
-        "email": "wjddnr3315@gmail.com",
-    }
 
     def form_valid(self, form):
 
         form.save()
 
         email = form.cleaned_data.get("email")
-        password = form.cleaned_data.get("password")
+        password = form.cleaned_data.get("password1")
         user = authenticate(self.request, username=email, password=password)
         if user is not None:
             login(self.request, user)
@@ -77,6 +72,9 @@ def complete_verification(request, key):
 
 
 def github_login(request):
+
+    """ Github Login Definition """
+
     client_id = os.environ.get("GH_ID")
     redirect_uri = "http://127.0.0.1:8000/users/login/github/callback"
     return redirect(
@@ -89,6 +87,9 @@ class GithubException(Exception):
 
 
 def github_callback(request):
+
+    """ Github Callback Definition """
+
     try:
         client_id = os.environ.get("GH_ID")
         client_secret = os.environ.get("GH_SECRET")
@@ -145,11 +146,10 @@ def github_callback(request):
         return redirect(reverse("users:login"))
 
 
-class KakaoException(Exception):
-    pass
-
-
 def kakao_login(request):
+
+    """ KaKao Login Definition """
+
     client_id = os.environ.get("KAKAO_ID")
     redirect_uri = "http://127.0.0.1:8000/users/login/kakao/callback"
     return redirect(
@@ -157,7 +157,14 @@ def kakao_login(request):
     )
 
 
+class KakaoException(Exception):
+    pass
+
+
 def kakao_callback(request):
+
+    """ Kakao Callback Definition """
+
     redirect_uri = "http://127.0.0.1:8000/users/login/kakao/callback"
     try:
         code = request.GET.get("code")
@@ -180,7 +187,7 @@ def kakao_callback(request):
         if email is None:
             raise KakaoException
         nickname = profile_json.get("properties").get("nickname")
-        profile_image = (
+        profile_image_url = (
             profile_json.get("kakao_account")
             .get("profile")
             .get("profile_image_url", None)
@@ -199,8 +206,8 @@ def kakao_callback(request):
             )
             user.set_unusable_password()
             user.save()
-            if profile_image is not None:
-                photo_request = requests.get(profile_image)
+            if profile_image_url is not None:
+                photo_request = requests.get(profile_image_url)
                 user.avatar.save(
                     f"{nickname}-avatar", ContentFile(photo_request.content)
                 )

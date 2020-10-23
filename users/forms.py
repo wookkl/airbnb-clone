@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
 from . import models
 
 
@@ -23,36 +24,27 @@ class LoginForm(forms.Form):
             self.add_error("email", forms.ValidationError("User deos not exits."))
 
 
-class SignUpForm(forms.ModelForm):
+class SignUpForm(UserCreationForm):
 
     """ SignUp Form Definition """
 
+    email = forms.EmailField()
+
     class Meta:
         model = models.User
-        fields = ("first_name", "last_name", "email")
+        fields = ("email", "first_name", "last_name")
 
-    password = forms.CharField(widget=forms.PasswordInput)
-    confirm_password = forms.CharField(
-        widget=forms.PasswordInput, label="Confirm Password"
-    )
-
-    def clean_confirm_password(self):
-
-        password = self.cleaned_data.get("password")
-        confirm_password = self.cleaned_data.get("confirm_password")
-
-        if password != confirm_password:
-            raise forms.ValidationError("Password confirmation does not match.")
-        else:
-            return confirm_password
+    def clean_email(self):
+        email = self.cleaned_data.get("email")
+        try:
+            models.User.objects.get(email=email)
+            raise forms.ValidationError("Email already exists.")
+        except models.User.DoesNotExist:
+            return email
 
     def save(self, *args, **kwargs):
-
         user = super().save(commit=False)
-
         email = self.cleaned_data.get("email")
-        password = self.cleaned_data.get("password")
-
         user.username = email
-        user.set_password(password)
+        user.set_password(self.cleaned_data["password1"])
         user.save()
