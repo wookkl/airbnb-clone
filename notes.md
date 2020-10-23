@@ -699,3 +699,37 @@ framework인데 utility를 우선시 하는 framework
 대부분의 framework는 완제품인 (모든게 갖춰진) 다수의 class들로 제공됨
 반면에 Tailwind는 오직 제공하는 것은 결과를 만들어낵 위해 같이 넣는 class name들 뿐임
 간단하게 많은 CSS Property들을 class로써 가지고 있다는 것
+
+## 작동하는 방법
+
+styles.scss : sass file 여기에 sass code 쓸 수 있음
+tailwind directive가 있음 @tailwind 라고 쓰는 건 directive를 위한 규칙
+css 편집과 관련된 모든 것들은 styles.scss에 작성됨
+static폴더는 건드리지 않는게 좋음
+scss에서 생성하고 건드리는 모든 것들 scss파일에서 작성하는 모든 것들이 assets/scss/styles.scss에 들어있어야 함
+
+css스크립트를 실행할 때 마다 gulp를 불러올 것 임
+기본적으로 하는 일은 assets/scss/styles.scss 로 가서 css로 바꾸는 것임
+결과적으로 우리가 보내는 브라우저에게 보내는 것은 statics/css파일임
+assets - 프로그래머를 위한 것
+static - 브라우저를 위한 것
+
+보안문제로 인해 url만 가지고 서버의 파일을 navigate 할 수 없음
+그래서 원하는 폴더에 접근할 수 없음
+따라서 장고에게 어떤 파일을 expose 할 것인지 알려줘야함
+
+gulpfile.js > 기본적으로 sass코드를 가져다가 css 코드로 바꾸는것
+
+## static 파일 enable하는 방법
+
+```python
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+```
+
+## stylesheet를 링크 시킬때 일일이 절대 주소를 적을 필요 없이 태그를 사용
+
+{% static 'css/styles.css' %}
+static 태그는 잘 안쓰니까 로드해줘야 함
+로드하는 방법은 맨위에 {% load statc %}
