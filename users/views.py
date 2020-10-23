@@ -5,6 +5,7 @@ from django.urls import reverse_lazy
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.views import LogoutView
+from django.core.files.base import ContentFile
 from . import forms, models
 
 
@@ -170,18 +171,20 @@ def kakao_callback(request):
         if error is not None:
             raise KakaoException
         access_token = token_json.get("access_token")
-        proifle_request = requests.get(
+        profile_request = requests.get(
             "https://kapi.kakao.com/v2/user/me",
             headers={"Authorization": f"Bearer {access_token}"},
         )
-        profile_json = proifle_request.json()
-        email = profile_json.get("email", None)
-
+        profile_json = profile_request.json()
+        email = profile_json.get("kakao_account").get("email", None)
         if email is None:
             raise KakaoException
-        properties = profile_json.get("properties")
-        nickname = properties.get("nickname")
-        profile_image = properties.get("profile_image", None)
+        nickname = profile_json.get("properties").get("nickname")
+        profile_image = (
+            profile_json.get("kakao_account")
+            .get("profile")
+            .get("profile_image_url", None)
+        )
         try:
             user = models.User.objects.get(email=email)
             if user.login_method != models.User.LOGIN_KAKAO:
@@ -196,6 +199,11 @@ def kakao_callback(request):
             )
             user.set_unusable_password()
             user.save()
+            if profile_image is not None:
+                photo_request = requests.get(profile_image)
+                user.avatar.save(
+                    f"{nickname}-avatar", ContentFile(photo_request.content)
+                )
         login(request, user)
         return redirect(reverse("core:home"))
     except KakaoException:
