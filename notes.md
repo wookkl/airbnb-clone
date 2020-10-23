@@ -690,3 +690,12 @@ os.environ.get("DATA")
     3. 요청한 데이터에는 .content를 멤버변수가 있음 raw-byte 데이임
     4. 그 데이터를 Contentfile에 넣어주면 임의의 파일이 생성됨
     5. user.imagefiled.save 메서드를 통해 저장해줌
+
+# CSS Part
+
+## Tailwind CSS
+
+framework인데 utility를 우선시 하는 framework
+대부분의 framework는 완제품인 (모든게 갖춰진) 다수의 class들로 제공됨
+반면에 Tailwind는 오직 제공하는 것은 결과를 만들어낵 위해 같이 넣는 class name들 뿐임
+간단하게 많은 CSS Property들을 class로써 가지고 있다는 것
