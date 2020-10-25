@@ -745,3 +745,18 @@ static 태그는 잘 안쓰니까 로드해줘야 함
 rem은 가장 가까운 font size와 관련이 없음 root font size에 연관이 있음
 
 tailwind의 root font size는 16px
+
+## tailwind에서 확장하는 법
+
+```javascript
+//tailwind.config.js
+theme: {
+    extend: {
+      spacing:{
+        "25vh": "25vh",
+        "50vh": "50vh",
+        "75vh": "75vh",
+      }
+    },
+  },
+```
