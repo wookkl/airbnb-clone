@@ -675,11 +675,11 @@ os.environ.get("DATA")
 
     1. Github Login 버튼 클릭
     2. 그 링크는 github.com으로 redirect됨
-    3. github.com 은 먗먗 데이터들을 필요로함 (client_id, redirect_uri, scope)
+    3. github.com 은 몇몇 데이터들을 필요로함 (client_id, redirect_uri, scope)
     4. user가 github에서 accept버튼을 누르면 다시 redirect_uri로 redirect 됨 Github_callback의 결과값
     5. github_callback에서는 url에서 code를 가져옴
     6. token을 액세스 하기 위해서 코드를가지고 request함
-    7. 그럼 json data를 받을 수 있음 "Accept": "application/json" <<이 라인에 의해서 access_token이 들어있음
+    7. 그럼 json data를 받을 수 있음 "Accept": "application/json" << 이 라인에 의해서 access_token이 들어있음
     8. access_token를 가지고 github api에 request할 수 있음 headers에 token을 보냄
     9. 결과적으로 user의 profile을 얻을 수 있음 json 형태로
 
@@ -687,7 +687,7 @@ os.environ.get("DATA")
 
     1. image url를 얻는다.
     2. imgage url로 부터 request한다.
-    3. 요청한 데이터에는 .content를 멤버변수가 있음 raw-byte 데이임
+    3. 요청한 데이터에는 .content를 멤버변수가 있음 raw-byte 데이터임
     4. 그 데이터를 Contentfile에 넣어주면 임의의 파일이 생성됨
     5. user.imagefiled.save 메서드를 통해 저장해줌
 
@@ -733,3 +733,15 @@ STATICFILES_DIRS = [
 {% static 'css/styles.css' %}
 static 태그는 잘 안쓰니까 로드해줘야 함
 로드하는 방법은 맨위에 {% load statc %}
+
+## em = = font-size
+
+만약 font-size가 20px라면
+2em은 40px 가장 가까운 font size와 관련이 있음
+많은 반응형 웹 사이트들이 사용하는 측정단위
+
+## rem = root em
+
+rem은 가장 가까운 font size와 관련이 없음 root font size에 연관이 있음
+
+tailwind의 root font size는 16px
