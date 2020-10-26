@@ -760,3 +760,9 @@ theme: {
     },
   },
 ```
+
+## 긴 글 자르는 밥 Tailwind
+
+.truncate: 긴글을 자르고 축소시킴
+overflow-hidden: 자신보다 길면 아예 갈라버림
+block : 길어서 넘어가는 부분 ...으로 나타냄
