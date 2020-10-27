@@ -9,4 +9,13 @@
     @apply border-gray-600;
   }
 }
+.btn {
+  @apply w-full font-medium text-center rounded-md py-5 my-1;
+}
+input {
+  @apply border border-gray-600 px-5;
+  &:focus {
+    @apply outline-none border-teal-5 00;
+  }
+}
 @tailwind utilities;

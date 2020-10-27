@@ -11,11 +11,21 @@
     
 {% block content %}
     <div class="container xl:w-1/4 lg:w-5/12 md:w-1/2 mx-auto my-10 flex flex-col justify-center items-center border border-gray-400 p-6">
-        {% include "partials/social_login.html" %}
-        <form method="post" action="{% url "users:login" %} ">
+        {% include "partials/social_login.html" %}    
+        <form class="w-full" method="post" action="{% url "users:login" %} ">
             {% csrf_token %}
-            {{form.as_p}}
-            <button>Login</button>
+            <div class="flex items-center relative">
+                <input class ="btn text-left" type="email" placeholder="Email Address">
+                <i class="far fa-envelope fa-lg absolute right-0 pr-4 text-gray-500"></i>
+            </div>
+            <div class="flex items-center relative">
+                <input class ="btn text-left" type="password" placeholder="Password">
+                <i class="fas fa-lock fa-lg absolute right-0 pr-5 text-gray-500"></i>
+            </div>
+            <button class="btn bg-red-500 text-white">Login</button>
         </form>
+        <div class="flex items-center mt-5">
+            <div class="mr-10">Don't have an account?</div><a class="border rounded-md border-red-500 text-red-500 py-1 px-2 text-sm" href="{% url 'users:signup' %}">Sign Up</a>
+        </div>
     </div>
 {% endblock content %}
