@@ -1,0 +1,7 @@
+<form class="w-full" method="post">
+    {% csrf_token %}
+    
+    {% include "mixins/auth/form_input.html" with form=form%}
+    
+    <button class="btn bg-red-500 text-white">{{cta}}</button>
+</form>

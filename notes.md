@@ -788,3 +788,9 @@ general 하다는 뜻은 form안에 공통적인 에러를 뜻함
     {{field}}
 {% endfor %}
 ```
+
+## 중복되는게 있으면 꼭 분할/정복 !!
+
+```python
+{% include 'partials/index.html' with object=object%}
+```
