@@ -766,3 +766,25 @@ theme: {
 .truncate: 긴글을 자르고 축소시킴
 overflow-hidden: 자신보다 길면 아예 갈라버림
 block : 길어서 넘어가는 부분 ...으로 나타냄
+
+## form에 input의 placeholder 바꾸는 방법!
+
+```python
+widgets = {
+            "email": forms.EmailInput(attrs={"placeholder": "Email"}),
+            "first_name": forms.TextInput(attrs={"placeholder": "First Name"}),
+            "last_name": forms.TextInput(attrs={"placeholder": "Last Name"}),
+        }
+```
+
+## general error 추가시키는 법
+
+general 하다는 뜻은 form안에 공통적인 에러를 뜻함
+
+## form field looping
+
+```python
+{% for field in form %}
+    {{field}}
+{% endfor %}
+```

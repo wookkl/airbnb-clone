@@ -14,14 +14,24 @@
         {% include "partials/social_login.html" %}    
         <form class="w-full" method="post" action="{% url "users:login" %} ">
             {% csrf_token %}
-            <div class="flex items-center relative">
-                {{form.email}}
-                <i class="far fa-envelope fa-lg absolute right-0 pr-4 text-gray-500"></i>
+
+            {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                    <p class="text-red-700 font-medium text-sm text">{{error}}</p>
+                {% endfor %}            
+            {% endif %}
+
+            {% for field in form %}
+            <div class="{% if field.errors %}has_error{% endif %}">
+                {{field}}
+                {% if field.errors %}
+                    {% for error in field.errors %}
+                        <p class="text-red-700 font-medium text-sm text">{{error}}</p>
+                    {% endfor %}            
+                {% endif %}
             </div>
-            <div class="flex items-center relative">
-                {{form.password}}
-                <i class="fas fa-lock fa-lg absolute right-0 pr-5 text-gray-500"></i>
-            </div>
+        {% endfor %}
+        
             <button class="btn bg-red-500 text-white">Login</button>
         </form>
         <div class="flex items-center mt-5">
