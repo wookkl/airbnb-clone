@@ -74,6 +74,5 @@ class User(AbstractUser):
                 fail_silently=False,
                 html_message=html_message,
             )
-            print(123)
             self.save()
         return

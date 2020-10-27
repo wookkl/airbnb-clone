@@ -10,12 +10,15 @@
   }
 }
 .btn {
-  @apply w-full font-medium text-center rounded-md py-5 my-1;
+  @apply w-full font-medium rounded-md py-5 my-1;
+}
+.login_box {
+  @apply mx-auto my-10 flex flex-col justify-center items-center border border-gray-400 p-6;
 }
 input {
-  @apply border border-gray-600 px-5;
+  @apply w-full border rounded-md border-gray-600 font-medium px-5 py-5 my-1 text-left;
   &:focus {
-    @apply outline-none border-teal-5 00;
+    @apply outline-none border-teal-500;
   }
 }
 @tailwind utilities;

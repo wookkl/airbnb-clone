@@ -7,8 +7,10 @@ class LoginForm(forms.Form):
 
     """ Login Form Definition """
 
-    email = forms.EmailField()
-    password = forms.CharField(widget=forms.PasswordInput)
+    email = forms.EmailField(widget=forms.EmailInput(attrs={"placeholder": "Email"}))
+    password = forms.CharField(
+        widget=forms.PasswordInput(attrs={"placeholder": "Password"})
+    )
 
     def clean(self):
         email = self.cleaned_data.get("email")
@@ -28,11 +30,21 @@ class SignUpForm(UserCreationForm):
 
     """ SignUp Form Definition """
 
-    email = forms.EmailField()
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["password1"].widget.attrs.update({"placeholder": "Password"})
+        self.fields["password2"].widget.attrs.update(
+            {"placeholder": "Confirm password"}
+        )
 
     class Meta:
         model = models.User
         fields = ("email", "first_name", "last_name")
+        widgets = {
+            "email": forms.EmailInput(attrs={"placeholder": "Email"}),
+            "first_name": forms.TextInput(attrs={"placeholder": "First Name"}),
+            "last_name": forms.TextInput(attrs={"placeholder": "Last Name"}),
+        }
 
     def clean_email(self):
         email = self.cleaned_data.get("email")

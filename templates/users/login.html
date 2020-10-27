@@ -10,16 +10,16 @@
 {% endblock search-bar %}
     
 {% block content %}
-    <div class="container xl:w-1/4 lg:w-5/12 md:w-1/2 mx-auto my-10 flex flex-col justify-center items-center border border-gray-400 p-6">
+    <div class="login_box container xl:w-1/4 lg:w-5/12 md:w-1/2">
         {% include "partials/social_login.html" %}    
         <form class="w-full" method="post" action="{% url "users:login" %} ">
             {% csrf_token %}
             <div class="flex items-center relative">
-                <input class ="btn text-left" type="email" placeholder="Email Address">
+                {{form.email}}
                 <i class="far fa-envelope fa-lg absolute right-0 pr-4 text-gray-500"></i>
             </div>
             <div class="flex items-center relative">
-                <input class ="btn text-left" type="password" placeholder="Password">
+                {{form.password}}
                 <i class="fas fa-lock fa-lg absolute right-0 pr-5 text-gray-500"></i>
             </div>
             <button class="btn bg-red-500 text-white">Login</button>
