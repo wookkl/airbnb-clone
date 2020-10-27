@@ -794,3 +794,11 @@ general 하다는 뜻은 form안에 공통적인 에러를 뜻함
 ```python
 {% include 'partials/index.html' with object=object%}
 ```
+
+## Message framework
+
+메시지라는게 카톡같은 메시지가 아니라 문자열들을 유저들에게 준다는 것이랑 비슷
+다른 HTML을 템플릿 안에 추 하기를 윈함
+
+많은 메시지들을 유저들에게 보내줄 수 있음
+메시지는 오직 한번만 보여줌!
