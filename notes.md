@@ -825,6 +825,8 @@ Detail 안에 있는 모델을 보기 위해서는 url을 반환해야만 함
 모델과 필드만 넣어주면 편하게 수정이 가능함!
 수정완료 버튼을 누르면 get_absolute_url로 redirect됨!!
 
+이미지필드는 form의 인코딩 타입을 꼭 바꿔주어야함
+
 ## get_object method
 
 우리가 수정하기 원하는 객체를 반환
