@@ -31,10 +31,12 @@ select {
     @apply outline-none border-teal-500;
   }
 }
+
 select {
   @apply py-3;
   height: 50;
 }
+
 form .has_error {
   input {
     @apply bg-red-200;
@@ -45,6 +47,7 @@ textarea {
   resize: none;
   height: 100px;
 }
+
 @keyframes messageFadeIn {
   0% {
     opacity: 0;
@@ -79,4 +82,9 @@ textarea {
     @apply bg-yellow-400;
   }
 }
+
+.border-section {
+  @apply border-b border-gray-400 pb-5 mt-8;
+}
+
 @tailwind utilities;

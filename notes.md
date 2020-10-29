@@ -845,3 +845,5 @@ def get_object(self, queryset=None):
 SuccessMessageMixin class: 정상적으로 form이 완료되면 완료 message를 띄울 수 있음
 
 mixins.py
+
+장고는 아주 강력한 퍼미션 엔진!
