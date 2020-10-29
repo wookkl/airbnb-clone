@@ -45,5 +45,38 @@ textarea {
   resize: none;
   height: 100px;
 }
+@keyframes messageFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(15px);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+}
 
+.message {
+  animation: messageFadeIn 3s ease-in-out forwards;
+  &.error {
+    @apply bg-red-500;
+  }
+  &.info {
+    @apply bg-blue-500;
+  }
+  &.success {
+    @apply bg-green-500;
+  }
+  &.warning {
+    @apply bg-yellow-400;
+  }
+}
 @tailwind utilities;

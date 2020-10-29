@@ -838,3 +838,10 @@ Detail 안에 있는 모델을 보기 위해서는 url을 반환해야만 함
 def get_object(self, queryset=None):
     return self.request.user
 ```
+
+## mixins class
+
+일부 추가적인 기능을 제공
+SuccessMessageMixin class: 정상적으로 form이 완료되면 완료 message를 띄울 수 있음
+
+mixins.py

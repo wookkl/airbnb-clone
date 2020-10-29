@@ -3,14 +3,15 @@ import requests
 from django.views.generic import FormView, DetailView, UpdateView
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect, reverse
+from django.contrib import messages
+from django.core.files.base import ContentFile
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.views import LogoutView, PasswordChangeView
-from django.core.files.base import ContentFile
-from django.contrib import messages
-from . import forms, models
+from django.contrib.messages.views import SuccessMessageMixin
+from . import forms, models, mixins
 
 
-class LoginView(FormView):
+class LoginView(mixins.LoggedOutOnlyView, FormView):
 
     """ LogIn View Definition """
 
@@ -227,7 +228,7 @@ class UserProfileView(DetailView):
     context_object_name = "user_obj"
 
 
-class UpdateUserView(UpdateView):
+class UpdateProfileView(SuccessMessageMixin, UpdateView):
     model = models.User
     template_name = "users/update-profile.html"
     fields = (
@@ -239,6 +240,8 @@ class UpdateUserView(UpdateView):
         "language",
         "currency",
     )
+
+    success_message = "Profile Updated"
 
     def get_object(self, queryset=None):
         return self.request.user
@@ -252,8 +255,10 @@ class UpdateUserView(UpdateView):
         return form
 
 
-class UpdatePasswordView(PasswordChangeView):
+class UpdatePasswordView(SuccessMessageMixin, PasswordChangeView):
     template_name = "users/update-password.html"
+    success_url = reverse_lazy
+    success_message = "Password Updated"
 
     def get_form(self, form_class=None):
         form = super().get_form(form_class=form_class)
@@ -264,4 +269,5 @@ class UpdatePasswordView(PasswordChangeView):
         }
         return form
 
-    # def get_success_url(serlf):
+    def get_success_url(self):
+        return self.request.user.get_absolute_url()
