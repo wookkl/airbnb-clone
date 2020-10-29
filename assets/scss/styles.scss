@@ -12,7 +12,11 @@
 }
 
 .btn {
-  @apply w-full font-medium rounded-md py-5 my-1;
+  @apply text-center w-full font-light rounded-md py-5 text-lg;
+}
+
+.btn-link {
+  @apply text-center w-full font-light rounded-lg py-3 text-lg text-white bg-red-500;
 }
 
 .login_box {
