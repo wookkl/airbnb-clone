@@ -818,3 +818,18 @@ Detail 안에 있는 모델을 보기 위해서는 url을 반환해야만 함
 ## get_context_data
 
 템플릿 안에 더 많은 컨텍스트를 사용할 수 있게 해줌
+
+## UpdateView
+
+이름 그대로 유저 모델 또는 객체를 가져와 업데이트 시켜줌. 폼을 만들어 주기도 함
+모델과 필드만 넣어주면 편하게 수정이 가능함!
+수정완료 버튼을 누르면 get_absolute_url로 redirect됨!!
+
+## get_object method
+
+우리가 수정하기 원하는 객체를 반환
+
+```python
+def get_object(self, queryset=None):
+    return self.request.user
+```
