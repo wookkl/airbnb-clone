@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from . import models
 
 
@@ -60,3 +60,18 @@ class SignUpForm(UserCreationForm):
         user.username = email
         user.set_password(self.cleaned_data["password1"])
         user.save()
+
+
+class UpdatePasswordForm(PasswordChangeForm):
+
+    """ SignUp Form Definition """
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["old_password"].widget.attrs.update({"placeholder": "Old password"})
+        self.fields["new_password1"].widget.attrs.update(
+            {"placeholder": "New password"}
+        )
+        self.fields["new_password2"].widget.attrs.update(
+            {"placeholder": "Confirm new password"}
+        )

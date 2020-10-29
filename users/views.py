@@ -247,3 +247,5 @@ class UpdateUserView(UpdateView):
 
 class UpdatePasswordView(PasswordChangeView):
     template_name = "users/update-password.html"
+    form_class = forms.UpdatePasswordForm
+    success_url = reverse_lazy("core:home")
