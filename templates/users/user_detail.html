@@ -2,11 +2,22 @@
 
 
 {% block page_title %}
-    {{user_obj.first_name}}
+    {{user_obj.first_name}}'s Profile
 {% endblock page_title %}
     
 {% block content %}
     <div class="login_box container xl:w-1/4 lg:w-5/12 md:w-1/2">
-        {{user_obj.first_name}}
+        {% include "mixins/user_avatar.html" with user=user_obj %}   
+
+        <div class="flex items-center">
+            <span class="text-3xl mt-1">{{user_obj.first_name}}</span>
+            {% if user_obj.superhost %}
+                <i class="fas fa-check-circle text-teal-400 ml-1 pt-2"></i>
+            {% endif %} 
+        </div>
+
+        <span class="text-lg">{{user_obj.bio}}</span>
+
+        <a href="#" class="btn">Edit Profile</a>
     </div>
 {% endblock content %}
