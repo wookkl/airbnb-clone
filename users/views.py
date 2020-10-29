@@ -2,7 +2,7 @@ import os
 import requests
 from django.views.generic import FormView, DetailView, UpdateView
 from django.urls import reverse_lazy
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import redirect, reverse
 from django.contrib import messages
 from django.core.files.base import ContentFile
 from django.contrib.auth import authenticate, login, logout
@@ -17,7 +17,6 @@ class LoginView(mixins.LoggedOutOnlyView, FormView):
 
     template_name = "users/login.html"
     form_class = forms.LoginForm
-    success_url = reverse_lazy("core:home")
 
     def form_valid(self, form):
         email = form.cleaned_data.get("email")
@@ -25,7 +24,15 @@ class LoginView(mixins.LoggedOutOnlyView, FormView):
         user = authenticate(self.request, username=email, password=password)
         if user is not None:
             login(self.request, user)
+            messages.success(self.request, f"Hello {user.first_name}")
         return super().form_valid(form)
+
+    def get_success_url(self):
+        next_arg = self.request.GET.get("next")
+        if next_arg is not None:
+            return next_arg
+        else:
+            return reverse("core:home")
 
 
 class LogoutView(LogoutView):
@@ -36,9 +43,10 @@ class LogoutView(LogoutView):
 
     def post(request):
         logout(request)
+        messages.info(self.request, f"Goodbye")
 
 
-class SignUpView(FormView):
+class SignUpView(mixins.LoggedOutOnlyView, FormView):
 
     """ SignUp View Definition """
 
@@ -56,7 +64,7 @@ class SignUpView(FormView):
         if user is not None:
             login(self.request, user)
             user.verify_email()
-
+            messages.success(self.request, f"Welcome {user.first_name}")
         return super().form_valid(form)
 
 
@@ -66,9 +74,9 @@ def complete_verification(request, key):
         user.email_verified = True
         user.email_secret = ""
         user.save()
-        # to do: add success message
+        messages.success(request, "Verification Completed")
     except models.User.DoesNotExist:
-        # to do: add error message
+        messages.success(request, "User does not exist")
         return redirect(reverse("core:home"))
 
 
@@ -139,7 +147,7 @@ def github_callback(request):
                         user.set_unusable_password()
                         user.save()
                     login(request, user)
-                    messages.success(request, f"Welcome back {user.first_name}")
+                    messages.success(request, f"Hi {user.first_name}")
                     return redirect(reverse("core:home"))
                 else:
                     raise GithubException("Can't get your profile")
@@ -216,7 +224,7 @@ def kakao_callback(request):
                     f"{nickname}-avatar", ContentFile(photo_request.content)
                 )
         login(request, user)
-        messages.success(request, f"Welcome back {user.first_name}")
+        messages.success(request, f"Hi {user.first_name}")
         return redirect(reverse("core:home"))
     except KakaoException as e:
         messages.error(request, e)
@@ -228,7 +236,7 @@ class UserProfileView(DetailView):
     context_object_name = "user_obj"
 
 
-class UpdateProfileView(SuccessMessageMixin, UpdateView):
+class UpdateProfileView(mixins.LoggedInOnlyView, SuccessMessageMixin, UpdateView):
     model = models.User
     template_name = "users/update-profile.html"
     fields = (
@@ -255,9 +263,13 @@ class UpdateProfileView(SuccessMessageMixin, UpdateView):
         return form
 
 
-class UpdatePasswordView(SuccessMessageMixin, PasswordChangeView):
+class UpdatePasswordView(
+    mixins.EmailLoginOnlyView,
+    mixins.LoggedInOnlyView,
+    SuccessMessageMixin,
+    PasswordChangeView,
+):
     template_name = "users/update-password.html"
-    success_url = reverse_lazy
     success_message = "Password Updated"
 
     def get_form(self, form_class=None):
