@@ -10,7 +10,7 @@
         {{field}}
         {% if field.errors %}
             {% for error in field.errors %}
-                <p class="text-red-700 font-medium text-sm text">{{error}}</p>
+                <span class="text-red-700 font-medium text-sm text">{{error}}</span>
             {% endfor %}            
         {% endif %}
     </div>
