@@ -847,3 +847,13 @@ SuccessMessageMixin class: 정상적으로 form이 완료되면 완료 message�
 mixins.py
 
 장고는 아주 강력한 퍼미션 엔진!
+
+## pluralize
+
+{{room.reviews.count}} review{{room.reviews.count|pluralize}}
+복수일때만 s를 붙여줌
+
+## defualt
+
+include에서 변수 넘겨줄때 받는쪽에서 default를 지정해줄 수 있음
+{{h_and_w|default:'h-20 w-20'}}

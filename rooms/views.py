@@ -1,4 +1,4 @@
-from django.views.generic import ListView, DetailView, View
+from django.views.generic import ListView, DetailView, View, UpdateView
 from django.shortcuts import render
 from django.core.paginator import Paginator
 from . import models, forms
@@ -110,3 +110,7 @@ class SeerchView(View):
                 "form": form,
             },
         )
+
+
+class EditRoomView(UpdateView):
+    model = models.Room
