@@ -195,13 +195,9 @@ class EditPhotoView(user_mixins.LoggedInOnlyView, SuccessMessageMixin, UpdateVie
 
 
 class AddPhotoView(user_mixins.LoggedInOnlyView, FormView):
-    model = models.Photo
+
     template_name = "rooms/photo_create.html"
     form_class = forms.CreatePhotoForm
-    fields = (
-        "caption",
-        "file",
-    )
 
     def form_valid(self, form):
         pk = self.kwargs.get("pk")
@@ -210,7 +206,7 @@ class AddPhotoView(user_mixins.LoggedInOnlyView, FormView):
         return redirect(reverse("rooms:photos", kwargs={"pk": pk}))
 
 
-class RoomDeleteView(user_mixins.LoggedInOnlyView, DeleteView):
+class DeleteRoomView(user_mixins.LoggedInOnlyView, DeleteView):
     model = models.Room
     template_name = "rooms/room_delete.html"
 
@@ -228,3 +224,15 @@ def delete_callback(request, pk):
             raise Http404()
     except models.Room.DoesNotExist:
         return redirect(reverse("rooms:detail", kwargs={"pk": pk}))
+
+
+class CreateRoomView(user_mixins.LoggedInOnlyView, FormView):
+    form_class = forms.CreateRoomForm
+    template_name = "rooms/room_create.html"
+
+    def form_valid(self, form):
+        room = form.save()
+        room.host = self.request.user
+        room.save()
+        messages.success(self.request, "Room Created")
+        return redirect(reverse("rooms:detail", kwargs={"pk": room.pk}))

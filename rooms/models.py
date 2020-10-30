@@ -109,8 +109,12 @@ class Room(core_models.AbstractTimeStamp):
             return 0
 
     def first_photo(self):
-        photo = self.photos.all()[0]
-        return photo.file.url
+        try:
+            (photo,) = self.photos.all()[:1]
+            print(photo)
+            return photo.file.url
+        except ValueError:
+            return None
 
     def get_next_four_photos(self):
         photos = self.photos.all()[1:5]
