@@ -114,3 +114,24 @@ class SeerchView(View):
 
 class EditRoomView(UpdateView):
     model = models.Room
+    template_name = "rooms/room_edit.html"
+
+    fields = (
+        "name",
+        "description",
+        "country",
+        "city",
+        "price",
+        "address",
+        "guests",
+        "beds",
+        "baths",
+        "bedrooms",
+        "check_in",
+        "check_out",
+        "instant_book",
+        "room_type",
+        "amenities",
+        "facilities",
+        "house_rules",
+    )
