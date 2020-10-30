@@ -830,6 +830,8 @@ Detail 안에 있는 모델을 보기 위해서는 url을 반환해야만 함
 사용하면 편리히고 좋지만 통제력이 떨어짐
 최선은 UpdateView를 사용하되, 커스텀 form을 사용하는 것
 
+디폴트로 url에 있는 pk를 받음
+
 ## get_object method
 
 우리가 수정하기 원하는 객체를 반환
@@ -857,3 +859,7 @@ mixins.py
 
 include에서 변수 넘겨줄때 받는쪽에서 default를 지정해줄 수 있음
 {{h_and_w|default:'h-20 w-20'}}
+
+## django의 단점
+
+드래그앤 드랍같은 인터페이스가 없음
