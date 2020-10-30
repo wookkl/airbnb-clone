@@ -89,14 +89,17 @@
                     {% endfor %}
                 </div>
             </div>
-            
         </div>
-        
-        {% if room.host == user %}
-            <div class="w-1/3">
-                <a href="{% url 'rooms:edit' room.pk %}" class="btn-link block">Edit Room</a>
-            </div>
-        {% endif %}
+        <div class="w-1/4 flex flex-col">
+            {% if room.host == user %}
+                <div class="mb-4">
+                    <a href="{% url 'rooms:edit' room.pk %}" class="btn-link bg-teal-500 block">Edit Room</a>
+                </div>
+                <div>
+                    <a href="{% url 'rooms:delete' room.pk %}" class="btn-link block">Delete Room</a>
+                </div>
+            {% endif %}
+        </div>
     </div>
 {% endblock content %}
  

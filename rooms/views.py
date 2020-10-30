@@ -1,5 +1,12 @@
 from django.http import Http404
-from django.views.generic import ListView, DetailView, View, UpdateView, FormView
+from django.views.generic import (
+    ListView,
+    DetailView,
+    View,
+    UpdateView,
+    FormView,
+    DeleteView,
+)
 from django.shortcuts import render, redirect, reverse
 from django.core.paginator import Paginator
 from django.contrib import messages
@@ -172,7 +179,7 @@ def delete_photo(request, room_pk, photo_pk):
             messages.success(request, "Photo Deleted")
         return redirect(reverse("rooms:photos", kwargs={"pk": room_pk}))
     except models.Room.DoesNotExist:
-        redirect(reverse("core:home"))
+        return redirect(reverse("core:home"))
 
 
 class EditPhotoView(user_mixins.LoggedInOnlyView, SuccessMessageMixin, UpdateView):
@@ -201,3 +208,23 @@ class AddPhotoView(user_mixins.LoggedInOnlyView, FormView):
         form.save(pk)
         messages.success(self.request, "Photo Uploaded")
         return redirect(reverse("rooms:photos", kwargs={"pk": pk}))
+
+
+class RoomDeleteView(user_mixins.LoggedInOnlyView, DeleteView):
+    model = models.Room
+    template_name = "rooms/room_delete.html"
+
+
+@login_required
+def delete_callback(request, pk):
+    user = request.user
+    try:
+        room = models.Room.objects.get(pk=pk)
+        if room.host.pk == user.pk:
+            models.Room.objects.filter(pk=pk).delete()
+            messages.success(request, "Room Deleted")
+            return redirect(reverse("users:profile", kwargs={"pk": user.pk}))
+        else:
+            raise Http404()
+    except models.Room.DoesNotExist:
+        return redirect(reverse("rooms:detail", kwargs={"pk": pk}))

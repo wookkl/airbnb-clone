@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+
+{% block page_title %}
+    Delete Room
+{% endblock page_title %}
+
+
+{% block search-bar %}
+{% endblock search-bar %}
+    
+{% block content %}
+    <div class="container lg:w-5/12 md:w-x 1/2 xl:w-1/4 mx-auto my-10 flex flex-col items-center border p-6 border-gray-400">
+        <p class="font-medium text-lg ">Are you sure you want to delete this room?</p>
+        <div class="btn-link my-5"><a href="{% url 'rooms:delete-callback' pk=room.pk %}">Yes</a></div>
+        <div class="btn-link bg-teal-500"><a href="{% url 'rooms:detail' pk=room.pk %}">Back to room</a></div>
+    </div>
+{% endblock content %}
