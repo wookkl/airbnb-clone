@@ -873,3 +873,9 @@ include에서 변수 넘겨줄때 받는쪽에서 default를 지정해줄 수 �
 
 화폐 언어 또는 호스트/게스트 모드는 따로 데이터베이스에 저장하지 않아도 됨
 session으로 처리할 수 있음
+
+## save method
+
+database에 저장할떄 many-to-many 필드는 따로 form.save_m2m() method를 호출해야함!!
+대신에 모델 먼저 데이터베이스에 저장한 후에 다대다 필드를 저장!
+form을 저장해야함!!
