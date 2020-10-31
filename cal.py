@@ -33,3 +33,6 @@ class Calendar(calendar.Calendar):
 
     def get_month(self):
         return self.months[self.month - 1]
+
+    def get_year(self):
+        return self.year
