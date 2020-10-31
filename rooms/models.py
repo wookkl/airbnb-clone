@@ -112,7 +112,6 @@ class Room(core_models.AbstractTimeStamp):
     def first_photo(self):
         try:
             (photo,) = self.photos.all()[:1]
-            print(photo)
             return photo.file.url
         except ValueError:
             return None
@@ -122,5 +121,6 @@ class Room(core_models.AbstractTimeStamp):
         return photos
 
     def get_calendars(self):
-        calendar = Calendar(2019, 11)
-        return False
+        this_month = Calendar(2020, 10)
+        next_month = Calendar(2020, 11)
+        return (this_month, next_month)
