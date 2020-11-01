@@ -901,3 +901,10 @@ def extag(value):
     return value.capitalize() ## 최종적인 반환값
     #{{'someting'|extag}} 쓰면 Something 반환
 ```
+
+## simple_tag(func=None, takes_context=None, name=None)
+
+takes_context=True해주면 장고가 전달해주는 유저나 다른 컨텍스트를 받을 수 있음
+
+태그는 필터보다 더 많은 아규먼트를 보낼 수 있음!!
+{% is_booked room day as is_booked_bool %} << 이렇게 하면 is_booked_bool이라는 변수를 가지게 됨!
