@@ -1,3 +1,4 @@
+import datetime
 from django.db import models
 from django.utils import timezone
 from core import models as core_models
@@ -60,9 +61,13 @@ class Reservation(core_models.AbstractTimeStamp):
             end = self.check_out
             difference = end - start
             existing_booked_day = BookedDay.objects.filter(
-                day__range=(start, end)
+                day__range=(start, end), reservation__room=self.room
             ).exists()
-            if existing_booked_day == False:
-                
-        else:
-            return super().save(*arg, **kwargs)
+            if existing_booked_day is False:
+                super().save(*args, **kwargs)
+                for i in range(difference.days + 1):
+                    day = start + datetime.timedelta(days=i)
+                    print(day)
+                    bookedday = BookedDay.objects.create(day=day, reservation=self)
+                    bookedday.save()
+                return
