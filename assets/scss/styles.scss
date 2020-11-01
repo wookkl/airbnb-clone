@@ -93,4 +93,7 @@ textarea {
   grid-gap: 10px;
   justify-items: center;
 }
+.cal-number {
+  @apply w-full rounded-md text-center p-1 bg-gray-200;
+}
 @tailwind utilities;
