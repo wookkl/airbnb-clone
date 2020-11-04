@@ -19,7 +19,7 @@
             <div class="border-section mt-0 pb-0"></div>
             <div class="max-w-full font-medium m-5 ">
                 <div>
-                    <span class="mr-2">{{reservation.check_in|date:"M j, Y"}} - {{reservation.room.guests}} Guest{{reservation.room.guests|pluralize}} {{reservation.}}</span>
+                    <span class="mr-3">{{reservation.check_in|date:"M j, Y"}} - {{reservation.check_out|date:"M j, Y"}} / {{reservation.room.guests}} Guest{{reservation.room.guests|pluralize}}</span>
                     <span class="
                         {% if reservation.status == 'pending' %}
                             text-yellow-500
@@ -53,9 +53,9 @@
             <div class="py-10 px-5 flex">
                 {% if reservation.status == 'pending' %}
                     {% if reservation.room.host == 'user'%}
-                    <a href="#" class="btn-link px-3 mx-6">Confirm Reservation</a>
+                    <a href="{% url 'reservations:edit' reservation.pk 'confirm' %}" class="btn-link px-3 mx-6">Confirm Reservation</a>
                     {% endif %}
-                    <a href="#" class="btn-link px-3 mx-6">Cancel Reservation</a>
+                    <a href="{% url 'reservations:edit' reservation.pk 'cancel' %}" class="btn-link px-3 mx-6">Cancel Reservation</a>
                 {% endif %}
             </div>
         </div>
