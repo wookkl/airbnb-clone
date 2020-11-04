@@ -1,5 +1,6 @@
 import os
 import requests
+from django.utils import translation
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic import FormView, DetailView, UpdateView
@@ -289,6 +290,7 @@ class UpdatePasswordView(
 
 @login_required
 def switch_hosting(request):
+
     try:
         del request.session["is_hosting"]
     except KeyError:
@@ -299,5 +301,5 @@ def switch_hosting(request):
 def switch_language(request):
     lang = request.GET.get("lang", None)
     if lang is not None:
-        pass
+        request.session[translation.LANGUAGE_SESSION_KEY] = lang
     return HttpResponse(status=200)

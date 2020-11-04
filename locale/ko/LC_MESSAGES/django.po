@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 17:36+0900\n"
+"POT-Creation-Date: 2020-11-04 20:39+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,8 +20,13 @@ msgstr ""
 
 #: templates/base.html:23
 msgid "Search by City"
-msgstr "도시 검색"
+msgstr "12"
 
-#: templates/partials/footer.html:4
+#: templates/partials/footer.html:19
 msgid "All rights reserved"
-msgstr "판권 보유"
+msgstr "1"
+
+#: templates/rooms/room_list.html:26
+#, python-format
+msgid "Page %(current_page)s of %(total_pages)s"
+msgstr "페이지 %(current_page)s 의 %(total_pages)s"

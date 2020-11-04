@@ -34,7 +34,7 @@ class RoomDetail(DetailView):
     model = models.Room
 
 
-class SeerchView(View):
+class SearchView(View):
 
     """ search Definition """
 
