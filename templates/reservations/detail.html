@@ -54,7 +54,7 @@
                 {% if reservation.status != 'canceled' %}
                     {% if reservation.status == 'confirmed' and reservation.is_finished%}
                         <span class="font-medium text-2xl block mb-5">Write your review</span>
-                        <form class="w-1/2" action="" method="POST">
+                        <form class="w-1/2" action="{% url 'reviews:create' reservation.room.pk %}" method="POST">
                             {% csrf_token %}
                             {{form}}
                             <button class="btn-link mt-4">Submit Review</button>
