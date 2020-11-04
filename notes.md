@@ -932,3 +932,17 @@ class CustomReservationManager(models.Manager):
    ` object = managers.CustionReservationManager()`
 4. 사용할땐
    `reservation = models.Reservation.objects.get_or_none(pk=pk)`
+
+## form post
+
+request post받으면 안에 form이 저장되어있으므로 바로 form에 넘겨주면 됨
+`form = forms.CreateReviewForm(request.POST)`
+
+## ordering
+
+model이 list에 있는 경우에 정렬 방식을 정의
+
+```python
+class Meta:
+        ordering = ("-created",)
+```
