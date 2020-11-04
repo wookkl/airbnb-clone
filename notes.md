@@ -959,3 +959,5 @@ user를 절대 믿으면 아됨 form에서도 protect해주고 model에서도 pr
 2. settings.py에 locale 폴더 위치 지정
 3. .html에 {% load i18n %}
 4. trans태그로 태깅
+
+## 모델을 만들떄 trans_lazy 꼭 염두 해줘야함! 나중에 하면 귀찮!
