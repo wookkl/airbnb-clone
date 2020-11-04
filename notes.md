@@ -908,3 +908,27 @@ takes_context=True해주면 장고가 전달해주는 유저나 다른 컨텍스
 
 태그는 필터보다 더 많은 아규먼트를 보낼 수 있음!!
 {% is_booked room day as is_booked_bool %} << 이렇게 하면 is_booked_bool이라는 변수를 가지게 됨!
+
+## managers
+
+objects.get() objects.filter 이런것들이 다 manager임
+managers 상속 받는법
+
+1. managers.py를 만듦
+2.
+
+```python
+from django.db import models
+
+class CustomReservationManager(models.Manager):
+    def get_or_none(self, **kwargs):
+        try:
+            return self.get(**kwargs)
+        except self.model.DoesNotExist:
+            return None
+```
+
+3. models.py에
+   ` object = managers.CustionReservationManager()`
+4. 사용할땐
+   `reservation = models.Reservation.objects.get_or_none(pk=pk)`

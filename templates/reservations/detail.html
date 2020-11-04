@@ -1,0 +1,63 @@
+
+{% extends "base.html" %}
+
+
+{% block page_title %}
+    Reservation {{reservation.check_in}}
+{% endblock page_title %}
+
+{% block search-bar %}
+{% endblock search-bar %}
+    
+{% block content %}
+    <div class="container my-10 flex flex-col mx-auto items-center w-2/3">
+        <div class="w-max-full flex justify-start my-5">
+            <span class="text-3xl font-medium">Contact Your Host</span>
+        </div>
+        <div class="border border-gray-400 w-max-full">
+            <div class = "w-full h-56 bg-cover bg-center" style="background-image: url({{reservation.room.first_photo}});"></div>
+            <div class="border-section mt-0 pb-0"></div>
+            <div class="max-w-full font-medium m-5 ">
+                <div>
+                    <span class="mr-2">{{reservation.check_in|date:"M j, Y"}} - {{reservation.room.guests}} Guest{{reservation.room.guests|pluralize}} {{reservation.}}</span>
+                    <span class="
+                        {% if reservation.status == 'pending' %}
+                            text-yellow-500
+                        {% elif reservation.status == 'canceled' %}
+                            text-red-600
+                        {% else %}
+                            text-teal-500
+                        {% endif %}">{{reservation.get_status_display}}</span>
+                </div>
+                <div>
+                    <span class="text-2xl overflow-hidden">{{reservation.room}}</span>
+                </div>
+            </div>
+            <div class="border-section mt-0 pb-0"></div>
+            <div class="max-w-full font-medium flex m-5">
+                <div class="w-1/5 flex flex-col items-center justify-center">
+                    {% include "mixins/user_avatar.html" with user_obj=reservation.room.host%}
+                    <span class="mt-2 text-gray-600">{{reservation.room.host}}</span>
+                </div>
+                <div class="w-4/5 flex flex-col">
+                    <div class="max-w-full">
+                    <span class="block font-bold">Contact Your Airbnb Host</span>
+                    <span class="text-gray-600">Your Host is the best person to contact for questions about your reservation.</span>
+                    </div>
+                    <div class="max-w-full mt-6">
+                        <a class="btn-link font-semibold bg-white text-teal-500" href="#">Send a Message</a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-section mt-0 pb-0"></div>
+            <div class="py-10 px-5 flex">
+                {% if reservation.status == 'pending' %}
+                    {% if reservation.room.host == 'user'%}
+                    <a href="#" class="btn-link px-3 mx-6">Confirm Reservation</a>
+                    {% endif %}
+                    <a href="#" class="btn-link px-3 mx-6">Cancel Reservation</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}
