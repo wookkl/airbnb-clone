@@ -57,7 +57,10 @@ class Reservation(core_models.AbstractTimeStamp):
 
     def is_finished(self):
         now = timezone.now().date()
-        return self.check_out < now
+        is_finished = self.check_out < now
+        if is_finished:
+            BookedDay.objects.filter(reservation=self).delete()
+        return is_finished
 
     is_finished.boolean = True
 

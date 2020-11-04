@@ -10,7 +10,7 @@
 {% endblock search-bar %}
     
 {% block content %}
-    <div class="container my-10 flex flex-col mx-auto items-center w-2/3">
+    <div class="container my-10 flex flex-col mx-auto items-center w-1/2">
         <div class="w-max-full flex justify-start my-5">
             <span class="text-3xl font-medium">Contact Your Host</span>
         </div>
@@ -50,12 +50,23 @@
                 </div>
             </div>
             <div class="border-section mt-0 pb-0"></div>
-            <div class="py-10 px-5 flex">
-                {% if reservation.status == 'pending' %}
-                    {% if reservation.room.host == 'user'%}
-                    <a href="{% url 'reservations:edit' reservation.pk 'confirm' %}" class="btn-link px-3 mx-6">Confirm Reservation</a>
+            <div class="py-10 px-5 flex flex-col items-center">
+                {% if reservation.status != 'canceled' %}
+                    {% if reservation.status == 'confirmed' and reservation.is_finished%}
+                        <span class="font-medium text-2xl block mb-5">Write your review</span>
+                        <form class="w-1/2" action="" method="POST">
+                            {% csrf_token %}
+                            {{form}}
+                            <button class="btn-link mt-4">Submit Review</button>
+                        </form>
+                    {% else %}
+                        {% if reservation.status == 'pending' %}
+                            {% if reservation.room.host == 'user'%}
+                                <a href="{% url 'reservations:edit' reservation.pk 'confirm' %}" class="btn-link px-3 mx-6">Confirm Reservation</a>
+                            {% endif %}
+                            <a href="{% url 'reservations:edit' reservation.pk 'cancel' %}" class="btn-link px-3 mx-6">Cancel Reservation</a>
+                        {% endif %}
                     {% endif %}
-                    <a href="{% url 'reservations:edit' reservation.pk 'cancel' %}" class="btn-link px-3 mx-6">Cancel Reservation</a>
                 {% endif %}
             </div>
         </div>
