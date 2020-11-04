@@ -946,3 +946,16 @@ model이 list에 있는 경우에 정렬 방식을 정의
 class Meta:
         ordering = ("-created",)
 ```
+
+## validator
+
+MaxValueValidator, MinValueValidator form, model에 사용할 수 있음
+
+user를 절대 믿으면 아됨 form에서도 protect해주고 model에서도 protect해주자!
+
+## translations
+
+1. locale 폴더 생성
+2. settings.py에 locale 폴더 위치 지정
+3. .html에 {% load i18n %}
+4. trans태그로 태깅
