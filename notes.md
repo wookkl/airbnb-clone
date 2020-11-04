@@ -961,3 +961,7 @@ user를 절대 믿으면 아됨 form에서도 protect해주고 model에서도 pr
 4. trans태그로 태깅
 
 ## 모델을 만들떄 trans_lazy 꼭 염두 해줘야함! 나중에 하면 귀찮!
+
+## @register.simple_tag(takes_context=True)
+
+takes_context의 역할은 template을 call함 request object로, 그걸 이용할 수 있음
