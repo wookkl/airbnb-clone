@@ -10,10 +10,8 @@
         <h3 class="mb-10 text-2xl text-center">Your Favorites</h3>
         <div class="container mx-auto pb-10">
             <div class="flex flex-wrap mb-10">
-                {% for list in user.lists.all %}
-                    {% for room in list.rooms.all %}
-                        {% include 'mixins/room_card.html' with room=room %}            
-                    {% endfor %}
+                {% for room in user.list.rooms.all %}
+                    {% include 'mixins/room_card.html' with room=room %}            
                 {% endfor %}
             </div>
         </div>

@@ -45,7 +45,7 @@
                     <span class="text-gray-600">Your Host is the best person to contact for questions about your reservation.</span>
                     </div>
                     <div class="max-w-full mt-6">
-                        <a class="btn-link font-semibold bg-white text-teal-500" href="#">Send a Message</a>
+                        <a class="btn-link font-semibold bg-white text-teal-500" href="{% url 'conversations:go' reservation.room.host.pk reservation.guest.pk %}">Send a Message</a>
                     </div>
                 </div>
             </div>

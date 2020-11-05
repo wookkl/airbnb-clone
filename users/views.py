@@ -1,5 +1,6 @@
 import os
 import requests
+from django.conf import settings
 from django.utils import translation
 from django.http import HttpResponse
 from django.urls import reverse_lazy
@@ -301,5 +302,9 @@ def switch_hosting(request):
 def switch_language(request):
     lang = request.GET.get("lang", None)
     if lang is not None:
-        request.session[translation.LANGUAGE_SESSION_KEY] = lang
-    return HttpResponse(status=200)
+        translation.activate(lang)
+
+        response = HttpResponse(status=200)
+        response.set_cookie(settings.LANGUAGE_COOKIE_NAME, lang)
+        return response
+    return HttpResponse(status=400)

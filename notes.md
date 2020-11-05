@@ -965,3 +965,8 @@ user를 절대 믿으면 아됨 form에서도 protect해주고 model에서도 pr
 ## @register.simple_tag(takes_context=True)
 
 takes_context의 역할은 template을 call함 request object로, 그걸 이용할 수 있음
+
+## q objects
+
+hard quaries하는 방법
+복잡한 쿼리를 만들 떄 사용
