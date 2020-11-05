@@ -1,0 +1,47 @@
+
+{% extends "base.html" %}
+
+
+{% block page_title %}
+    Conversation
+{% endblock page_title %}
+
+{% block search-bar %}
+{% endblock search-bar %}
+    
+{% block content %}
+    <div class="container my-10 flex mx-auto w-full flex-row py-10 min-h-75vh">
+        <div class="border border-gray-400 w-1/4 py-12">
+            <div class="font-semibold text-lg mb-10 text-center">Conversation between</div>
+            <div class="flex justify-between items-center">
+                {% for user in conversation.participants.all %}
+                    <div class="flex flex-col justify-center items-center mx-auto">
+                        {% include "mixins/user_avatar.html" with user_obj=user%}
+                        <span class="text-gray-500 mt-3">{{user.first_name}}</span> 
+                    </div>
+                    {% if forloop.first %}
+                        <span class="text-2xl font-semibold">&</span>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>    
+        <div class="border flex-grow ml-10 p-10 flex flex-col">
+            {% for message in conversation.messages.all %}
+                <div class="mt-5 {% if message.user.pk == user.pk %}self-end{% endif %}">
+                    <span class="text-sm font-medium text-gray-600">{{message.user.first_name}}</span>
+                    <div class="flex items-end">
+                        <div class="mt-px  p-3 w-56 rounded-lg
+                        {% if message.user.pk != user.pk %}
+                            bg-teal-500
+                            text-white
+                        {% else %}
+                            bg-gray-300
+                        {% endif %}
+                        ">{{message.message}}</div>
+                        <span class="ml-3 text-gray-600">{{message.created|date:"P"}}</span>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>    
+    </div>
+{% endblock content %}

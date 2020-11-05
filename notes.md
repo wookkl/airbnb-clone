@@ -970,3 +970,11 @@ takes_context의 역할은 template을 call함 request object로, 그걸 이용�
 
 hard quaries하는 방법
 복잡한 쿼리를 만들 떄 사용
+
+## Detailview
+
+DetailView는 디폴트로 url에서 pk를 찾아서 줌
+
+## forloop
+
+for tag안에 사용할 수 있는 디폴트 variable
