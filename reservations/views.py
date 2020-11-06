@@ -1,6 +1,6 @@
 import datetime
 from django.http import Http404
-from django.views.generic import View
+from django.views.generic import View, ListView
 from django.contrib import messages
 from django.shortcuts import render, redirect, reverse
 from rooms import models as room_models
@@ -44,7 +44,7 @@ class ReservationDetailView(View):
 
         return render(
             self.request,
-            "reservations/detail.html",
+            "reservations/reservation_detail.html",
             {"reservation": reservation, "form": form},
         )
 
@@ -63,3 +63,8 @@ def edit_reservation(request, pk, verb):
     reservation.save()
     messages.success(request, "Reservation Updated")
     return redirect(reverse("reservations:detail", kwargs={"pk": reservation.pk}))
+
+
+class ReservationListView(ListView):
+    model = models.Reservation
+    context_object_name = "reservations"

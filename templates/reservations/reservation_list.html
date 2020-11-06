@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block page_title %}
+    My Reservations
+{% endblock page_title %}
+
+{%block content %}
+    <div class="container mx-auto pb-10 min-h-75vh">
+        <span class="block text-center text-2xl font-bold mt-32 mb-10">Reservations</span>
+        <div class="border rounded-md w-full p-5 flex flex-col">
+            <div class="flex justify-around text-left font-medium">
+                <span class="w-1/12">Status</span>
+                <span class="w-1/3">Dates and Location</span>
+                <span class="w-1/6">Host</span>
+                <span class="w-1/6">Details</span>
+            </div>
+            <div class ="border-section p-1 my-3"></div>
+            {% for reservation in reservations %}
+                {% if reservation.guest == user %}
+                    <div class="flex justify-around text-left font-medium  items-start mt-5">
+                        <div class="w-1/12">
+                            {{reservation.status}}
+                        </div>
+                        <div class="w-1/3 flex flex-col">
+                            <span>{{reservation.check_in}} ~ {{reservation.check_out}}</span>
+                            <span>{{reservation.room.city}}, {{reservation.room.country}}</span>
+                            <span>{{reservation.room.address}}</span>
+                        </div>
+                        <div class="w-1/6 flex">
+                            {% include "mixins/user_avatar.html" with user_obj=reservation.room.host  %}
+                            <div class="ml-5">
+                                <span class="block">{{reservation.room.host.first_name}}</span>
+                                <span>{{reservation.room.host.last_name}}</span>
+                            </div>
+                        </div>
+                        <div class="w-1/6 self-center">
+                            <a class="block" href="{% url 'reservations:detail' pk=reservation.pk %}">Go to Detail</a>
+                            <a class="" href="#">Messages</a>
+                        </div>
+                    </div>
+                    <div class="border-section my-3"></div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}
