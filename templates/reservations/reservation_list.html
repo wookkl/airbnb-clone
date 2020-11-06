@@ -6,7 +6,7 @@
 
 {%block content %}
     <div class="container mx-auto pb-10 min-h-75vh">
-        <span class="block text-center text-2xl font-bold mt-32 mb-10">Reservations</span>
+        <span class="block text-center text-2xl font-bold mt-32 mb-10 text-teal-500">Reservations</span>
         <div class="border rounded-md w-full p-5 flex flex-col">
             <div class="flex justify-around text-left font-medium">
                 <span class="w-1/12">Status</span>
@@ -18,8 +18,16 @@
             {% for reservation in reservations %}
                 {% if reservation.guest == user %}
                     <div class="flex justify-around text-left font-medium  items-start mt-5">
-                        <div class="w-1/12">
-                            {{reservation.status}}
+                        <div class="w-1/12
+                        {% if reservation.status == 'pending' %}
+                            text-yellow-500
+                        {% elif reservation.status == 'canceled' %}
+                            text-red-600
+                        {% else %}
+                            text-teal-500
+                        {% endif %}
+                        ">
+                            {{reservation.get_status_display}}
                         </div>
                         <div class="w-1/3 flex flex-col">
                             <span>{{reservation.check_in}} ~ {{reservation.check_out}}</span>
@@ -34,8 +42,8 @@
                             </div>
                         </div>
                         <div class="w-1/6 self-center">
-                            <a class="block" href="{% url 'reservations:detail' pk=reservation.pk %}">Go to Detail</a>
-                            <a class="" href="#">Messages</a>
+                            <a class="block text-red-500" href="{% url 'reservations:detail' pk=reservation.pk %}">Go to Detail</a>
+                            <a class="text-teal-500" href="{% url 'conversations:go' host_pk=reservation.room.host.pk guest_pk=user.pk%}">Messages</a>
                         </div>
                     </div>
                     <div class="border-section my-3"></div>
