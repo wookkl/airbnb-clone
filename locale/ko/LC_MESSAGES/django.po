@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-08 21:05+0900\n"
+"POT-Creation-Date: 2020-11-08 21:16+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,6 +21,10 @@ msgstr ""
 #: templates/base.html:23
 msgid "Search by City"
 msgstr "도시 검색"
+
+#: templates/mixins/room_card.html:9
+msgid "superhost"
+msgstr "슈퍼호스트"
 
 #: templates/partials/footer.html:19
 msgid "All rights reserved"
@@ -54,7 +58,7 @@ msgstr "프로필"
 msgid "Log out"
 msgstr "로그아웃"
 
-#: templates/partials/nav.html:23
+#: templates/partials/nav.html:23 templates/users/signup.html:17
 msgid "Log in"
 msgstr "로그인"
 
@@ -62,7 +66,20 @@ msgstr "로그인"
 msgid "Sign up"
 msgstr "회원가입"
 
+#: templates/partials/social_login.html:4
+msgid "Continue with GitHub"
+msgstr "깃허브로 계속하기"
+
+#: templates/partials/social_login.html:7
+msgid "Continue with Kakao"
+msgstr "카카오로 계속하기"
+
 #: templates/rooms/room_list.html:26
 #, python-format
 msgid "Page %(current_page)s of %(total_pages)s"
 msgstr "페이지 %(current_page)s 의 %(total_pages)s"
+
+#: templates/users/login.html:18
+#| msgid "Sign up"
+msgid "Sign Up"
+msgstr "회원가입"

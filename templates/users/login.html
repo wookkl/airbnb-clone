@@ -1,5 +1,6 @@
-{% extends "base.html" %}
+{% load i18n %}
 
+{% extends "base.html" %}
 
 {% block page_title %}
     Log In
@@ -14,7 +15,7 @@
         {% include "partials/social_login.html" %}    
         {% include "mixins/auth/auth_form.html" with form=form cta="Login"%}
         <div class="flex items-center mt-5">
-            <div class="mr-10">Don't have an account?</div><a class="border rounded-md border-red-500 text-red-500 py-1 px-2 text-sm" href="{% url 'users:signup' %}">Sign Up</a>
+            <div class="mr-10">Don't have an account?</div><a class="border rounded-md border-red-500 text-red-500 py-1 px-2 text-sm" href="{% url 'users:signup' %}">{% trans 'Sign Up' %}</a>
         </div>
     </div>
 {% endblock content %}

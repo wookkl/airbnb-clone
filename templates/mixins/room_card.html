@@ -1,3 +1,4 @@
+{% load i18n %}
 <div class="w-1/4 mb-8 p-2 overflow-hidden">
     <a href="{% url 'rooms:detail' room.pk %}">
         <div class="h-64 w-full bg-cover bg-center rounded-lg mb-2 shadow-lg" style="background-image:url({{room.first_photo}})">
@@ -5,7 +6,7 @@
         <div class="flex justify-between mb-2">
             <div class="w-4/5 overflow-hidden flex">
                 {% if room.host.superhost %}
-                    <span class="uppercase font-medium text-xs border border-black rounded text-center text-black py-px px-1 mr-2   ">superhost</span>
+                    <span class="uppercase font-medium text-xs border border-black rounded text-center text-black py-px px-1 mr-2">{% trans 'superhost' %}</span>
                 {% endif %}
                 <span class="text-gray-600 text-sm truncate block">{{room.city}}, {{room.country.name}}</span>
             </div>
