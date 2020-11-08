@@ -19,6 +19,8 @@
 - [x] Messaging
 - [x] en / kor translation
 
+### note.md: django crun system study notes
+
 <!-- Markdown link & img dfn's -->
 
 [python-image]: https://img.shields.io/badge/Python-3.8.5-blue.svg

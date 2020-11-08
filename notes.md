@@ -880,7 +880,7 @@ database에 저장할떄 many-to-many 필드는 따로 form.save_m2m() method를
 대신에 모델 먼저 데이터베이스에 저장한 후에 다대다 필드를 저장!
 form을 저장해야함!!
 
-## filters and tags
+## filters and tagsㄴ
 
 {% url %} << 이게 태그
 {% 'qweqwewqe'|upper} << 이게 필터
