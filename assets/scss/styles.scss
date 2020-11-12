@@ -67,6 +67,17 @@ textarea {
   }
 }
 
+#search-form {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 10px;
+  justify-items: center;
+  input,
+  select {
+    @apply p-2 h-12;
+  }
+}
+
 .message {
   animation: messageFadeIn 3s ease-in-out forwards;
   &.error {
