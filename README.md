@@ -10,7 +10,7 @@
 
 ![](screenshots/header.png)
 
-## Feature
+## Features
 
 - [x] BASIC CRUD SITE
 - [x] Log in / Log out [github, kakao]
